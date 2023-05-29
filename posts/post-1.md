@@ -1,4 +1,0 @@
----
-title: Post Title
----
-adfafadsfafads
