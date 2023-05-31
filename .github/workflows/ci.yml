@@ -1,0 +1,25 @@
+name: CI
+
+on: [push]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    name: Format, lint and check types
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+      # use cached node_modules if found (instead of running npm install)
+      - run: npm ci --prefer-offline
+
+      - name: Validate formatting
+        run: npm run format:check
+
+      - name: Validate linting
+        run: npm run lint:check
+
+      - name: Validate typing
+        run: npm run types:check
