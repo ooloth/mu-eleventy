@@ -45,7 +45,14 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addCollection('notes', function (collectionApi) {
     // See: https://www.11ty.dev/docs/collections/#getfilteredbyglob(-glob-)
-    return collectionApi.getFilteredByGlob('src/content/notes/*.md')
+    return collectionApi.getFilteredByGlob('src/content/topics/*.md')
+  })
+
+  // Extensions
+  // See: https://www.11ty.dev/docs/languages/custom/#aliasing-an-existing-template-language
+  // See: https://gist.github.com/zachleat/b274ee939759b032bc320be1a03704a2
+  eleventyConfig.addExtension(['11ty.ts', '11ty.tsx'], {
+    key: '11ty.js',
   })
 
   // Filters
