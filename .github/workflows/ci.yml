@@ -1,4 +1,4 @@
-name: CI
+name: Format, lint and check types
 
 on: [push]
 
