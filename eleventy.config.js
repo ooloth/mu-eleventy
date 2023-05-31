@@ -40,7 +40,12 @@ module.exports = function(eleventyConfig) {
 	// Collections
 	eleventyConfig.addCollection("posts", function(collectionApi) {
 		// See: https://www.11ty.dev/docs/collections/#getfilteredbyglob(-glob-)
-    return collectionApi.getFilteredByGlob(["content/posts/*.md", "notes/*.md"]);
+    return collectionApi.getFilteredByGlob("src/content/posts/*.md");
+  });
+
+	eleventyConfig.addCollection("notes", function(collectionApi) {
+		// See: https://www.11ty.dev/docs/collections/#getfilteredbyglob(-glob-)
+    return collectionApi.getFilteredByGlob("src/content/notes/*.md");
   });
 
 	// Filters
