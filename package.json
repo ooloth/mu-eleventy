@@ -23,7 +23,7 @@
     "format:check": "npm run prettier -- --list-different",
     "format:fix": "npm run prettier -- --write",
     "lint": "eslint '**/*.{js,ts,tsx}' --ignore-path .gitignore",
-    "prettier": "prettier \"**/*.+(css|graphql|html|js|json|jsx|md|mdx|ts|tsx|webc|yaml|yml)\" --ignore-path .gitignore",
+    "prettier": "prettier \"**/*.+(css|graphql|html|js|json|jsonc|jsx|md|mdx|toml|ts|tsx|webc|yaml|yml)\" --ignore-path .gitignore",
     "start": "npx @11ty/eleventy --serve --quiet",
     "types:check": "tsc",
     "validate": "npm run format:check && npm run lint && npm run types:check"
@@ -43,6 +43,7 @@
     "luxon": "^3.3.0",
     "markdown-it-anchor": "^8.6.7",
     "prettier": "^2.8.8",
+    "prettier-plugin-toml": "^0.3.1",
     "typescript": "^5.0.4"
   }
 }
