@@ -1,0 +1,18 @@
+extends:
+  - 'eslint:recommended'
+  - 'plugin:@typescript-eslint/recommended'
+  - prettier # should come last
+
+globals:
+  module: true
+  require: true
+
+parser: '@typescript-eslint/parser'
+
+plugins:
+  - '@typescript-eslint'
+
+root: true
+
+rules:
+   '@typescript-eslint/no-var-requires': off
