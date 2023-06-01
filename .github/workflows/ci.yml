@@ -19,7 +19,7 @@ jobs:
         run: npm run format:check
 
       - name: Validate linting
-        run: npm run lint:check
+        run: npm run lint
 
       - name: Validate typing
         run: npm run types:check
