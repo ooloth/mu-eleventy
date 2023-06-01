@@ -54,6 +54,22 @@
 			{{ content | safe }}
 		</main>
 
+		{# List every post in the project #}
+		<h2>All Posts</h2>
+		<ul>
+			{%- for entry in collections.posts %}
+			<li><a href="{{ entry.url }}"><code>{{ entry.url }}</code></a></li>
+			{%- endfor %}
+		</ul>
+
+		{# List every content page in the project #}
+		<h2>All Pages</h2>
+		<ul>
+			{%- for entry in collections.all %}
+			<li><a href="{{ entry.url }}"><code>{{ entry.url }}</code></a></li>
+			{%- endfor %}
+		</ul>
+
 		<footer></footer>
 
 		<!-- Current page: {{ page.url | htmlBaseUrl }} -->
