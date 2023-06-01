@@ -2,8 +2,8 @@ name: Format, lint and check types
 
 on:
   push:
-    paths-ignore:
-      - 'src/content/**'
+    paths:
+      - '!src/content/**'
 
 jobs:
   lint:
