@@ -1,11 +1,10 @@
+env:
+  node: true
+
 extends:
   - 'eslint:recommended'
   - 'plugin:@typescript-eslint/recommended'
   - prettier # should come last
-
-globals:
-  module: true
-  require: true
 
 parser: '@typescript-eslint/parser'
 
