@@ -8,8 +8,8 @@ on:
     branches:
       - main
     paths:
-      - 'public/**'
-      - 'src/**'
+      - 'public/**/*'
+      - 'src/**/*'
       - eleventy.config.drafts.js
       - eleventy.config.images.js
       - eleventy.config.js
