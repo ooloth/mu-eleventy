@@ -35,7 +35,7 @@ module.exports = function (eleventyConfig) {
   })
   eleventyConfig.addPlugin(pluginWebC, {
     // Glob to find no-import global components
-    components: '_includes/components/**/*.webc',
+    components: 'src/_includes/components/**/*.webc',
 
     // Adds an Eleventy WebC transform to process all HTML output
     useTransform: false,
