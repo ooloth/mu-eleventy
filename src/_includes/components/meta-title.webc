@@ -4,5 +4,5 @@
   // If the current page's frontmatter includes a "title", put it before the site title
   const metaTitle = title ? `${title} | ${$data.site.title}` : `${$data.site.title}`
 
-  return `<title>${metaTitle}</title>`
+  ;`<title>${metaTitle}</title>`
 </script>
