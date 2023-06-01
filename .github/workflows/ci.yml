@@ -1,4 +1,4 @@
-name: Format, lint and check types
+name: Validate formatting, linting and types
 
 on: push
 
