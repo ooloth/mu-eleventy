@@ -1,11 +1,12 @@
 const { DateTime } = require('luxon')
 const markdownItAnchor = require('markdown-it-anchor')
 
-const pluginRss = require('@11ty/eleventy-plugin-rss')
-const pluginSyntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight')
+const { EleventyHtmlBasePlugin } = require('@11ty/eleventy')
 const pluginBundle = require('@11ty/eleventy-plugin-bundle')
 const pluginNavigation = require('@11ty/eleventy-navigation')
-const { EleventyHtmlBasePlugin } = require('@11ty/eleventy')
+const pluginRss = require('@11ty/eleventy-plugin-rss')
+const pluginSyntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight')
+const pluginWebC = require('@11ty/eleventy-plugin-webc')
 
 const pluginDrafts = require('./eleventy.config.drafts.js')
 const pluginImages = require('./eleventy.config.images.js')
@@ -24,18 +25,31 @@ module.exports = function (eleventyConfig) {
   // Watch content images for the image pipeline.
   eleventyConfig.addWatchTarget('content/**/*.{svg,webp,png,jpeg}')
 
-  // App plugins
-  eleventyConfig.addPlugin(pluginDrafts)
-  eleventyConfig.addPlugin(pluginImages)
-
   // Official plugins
+  eleventyConfig.addPlugin(EleventyHtmlBasePlugin)
+  eleventyConfig.addPlugin(pluginBundle)
+  eleventyConfig.addPlugin(pluginNavigation)
   eleventyConfig.addPlugin(pluginRss)
   eleventyConfig.addPlugin(pluginSyntaxHighlight, {
     preAttributes: { tabindex: 0 },
   })
-  eleventyConfig.addPlugin(pluginNavigation)
-  eleventyConfig.addPlugin(EleventyHtmlBasePlugin)
-  eleventyConfig.addPlugin(pluginBundle)
+  eleventyConfig.addPlugin(pluginWebC, {
+    // Glob to find no-import global components
+    components: '_includes/components/**/*.webc',
+
+    // Adds an Eleventy WebC transform to process all HTML output
+    useTransform: false,
+
+    // Additional global data used in the Eleventy WebC transform
+    transformData: {},
+
+    // Options passed to @11ty/eleventy-plugin-bundle
+    bundlePluginOptions: {},
+  })
+
+  // Local plugins
+  eleventyConfig.addPlugin(pluginDrafts)
+  eleventyConfig.addPlugin(pluginImages)
 
   // Collections
   eleventyConfig.addCollection('posts', function (collectionApi) {
