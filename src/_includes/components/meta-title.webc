@@ -1,0 +1,8 @@
+<!-- see: https://11ty.webc.fun/recipes/webc-inside-your-head/ -->
+
+<script webc:type="js" webc:is="template">
+  // If the current page's frontmatter includes a "title", put it before the site title
+  const metaTitle = title ? `${title} | ${$data.site.title}` : `${$data.site.title}`
+
+  return `<title>${metaTitle}</title>`
+</script>
