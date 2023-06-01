@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-  <!-- <html lang="{{ metadata.language }}"> -->
+  <!-- <html lang="{{ site.language }}"> -->
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title webc:is="meta-title"></title>
-    <!-- <title>{{ title or metadata.title }}</title> -->
-    <!-- <meta name="description" content="{{ description or metadata.description }}"> -->
+    <!-- <title>{{ title or site.title }}</title> -->
+    <!-- <meta name="description" content="{{ description or site.description }}"> -->
 
     <!-- Atom and JSON feeds included by default -->
-    <!-- <link rel="alternate" href="/feed.xml" type="application/atom+xml" title="{{ metadata.title }}"> -->
-    <!-- <link rel="alternate" href="/feed.json" type="application/json" title="{{ metadata.title }}"> -->
+    <!-- <link rel="alternate" href="/feed.xml" type="application/atom+xml" title="{{ site.title }}"> -->
+    <!-- <link rel="alternate" href="/feed.json" type="application/json" title="{{ site.title }}"> -->
 
     <!-- Uncomment this if you’d like folks to know that you used Eleventy to build your site!  -->
     <!-- <meta name="generator" content="{{ eleventy.generator }}"> -->

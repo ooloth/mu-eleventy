@@ -1,21 +1,21 @@
 ---
-# metadata comes from _data/metadata.js
+# site comes from _data/site.js
 permalink: /feed.json
 ---
 {
 	"version": "https://jsonfeed.org/version/1.1",
-	"title": "{{ metadata.title }}",
-	"language": "{{ metadata.language }}",
-	"home_page_url": "{{ metadata.url | addPathPrefixToFullUrl }}",
-	"feed_url": "{{ permalink | htmlBaseUrl(metadata.url) }}",
-	"description": "{{ metadata.description }}",
+	"title": "{{ site.title }}",
+	"language": "{{ site.language }}",
+	"home_page_url": "{{ site.url | addPathPrefixToFullUrl }}",
+	"feed_url": "{{ permalink | htmlBaseUrl(site.url) }}",
+	"description": "{{ site.description }}",
 	"author": {
-		"name": "{{ metadata.author.name }}",
-		"url": "{{ metadata.author.url }}"
+		"name": "{{ site.author.name }}",
+		"url": "{{ site.author.url }}"
 	},
 	"items": [
 		{%- for post in collections.posts | reverse %}
-		{%- set absolutePostUrl = post.url | htmlBaseUrl(metadata.url) %}
+		{%- set absolutePostUrl = post.url | htmlBaseUrl(site.url) %}
 		{
 			"id": "{{ absolutePostUrl }}",
 			"url": "{{ absolutePostUrl }}",
