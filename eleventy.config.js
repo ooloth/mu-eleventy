@@ -40,7 +40,7 @@ module.exports = function (eleventyConfig) {
   // Collections
   eleventyConfig.addCollection('posts', function (collectionApi) {
     // See: https://www.11ty.dev/docs/collections/#getfilteredbyglob(-glob-)
-    return collectionApi.getFilteredByGlob('src/content/posts/*.md')
+    return collectionApi.getFilteredByGlob('src/content/posts/**/*.md')
   })
 
   eleventyConfig.addCollection('notes', function (collectionApi) {
