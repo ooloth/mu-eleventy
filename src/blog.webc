@@ -2,7 +2,35 @@
 layout: layouts/main.webc
 ---
 
-<h1>Archive</h1>
+<h1>Blog</h1>
 
 <!-- {% set postslist = collections.posts %}
 {% include "postslist.njk" %} -->
+
+<section>
+  <h2>Latest Posts</h2>
+  <ol reversed>
+    <script webc:type="js" webc:root>
+      `${collections.posts
+        .map(
+          post =>
+            `<li><time datetime="${htmlDateString(post.date)}">${readableDate(post.date)}</time><a href="${
+              post.url
+            }" target="_blank">${post.data.title}</a></li>`,
+        )
+        .join('')}`;
+    </script>
+  </ol>
+</section>
+
+<!-- {%- css %}.postlist { counter-reset: start-from {{ (postslistCounter or postslist.length) + 1 }} }{% endcss %} -->
+
+<!-- <ol reversed class="postlist">
+
+{% for post in postslist | reverse %}
+	<li class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
+		<time class="postlist-date" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate("LLLL yyyy") }}</time>
+	</li>
+{% endfor %}
+
+</ol> -->
