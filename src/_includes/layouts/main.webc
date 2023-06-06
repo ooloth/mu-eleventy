@@ -2,38 +2,37 @@
 layout: layouts/root.webc
 ---
 
-<a href="#skip" class="visually-hidden">Skip to main content</a>
+<!-- <a href="#skip" class="visually-hidden">Skip to main content</a> -->
 
 <header>
   <a href="/" @html="site.title"></a>
 
   <nav>
     <!-- <h2 class="visually-hidden">Top level navigation menu</h2> -->
-    <!-- <ul class="nav"> -->
-    <!-- {%- for entry in collections.all | eleventyNavigation %} -->
-    <!-- <li class="nav-item"><a href="{{ entry.url }}"{% if entry.url == page.url %} aria-current="page"{% endif %}>{{ entry.title }}</a></li> -->
-    <!-- {%- endfor %} -->
-    <!-- </ul> -->
+    <!--- {% if item.url == page.url %} aria-current="page" --->
+    <ul>
+      <script webc:type="js" webc:root>
+        `${$data.nav.top.map(item => `<li><a href="${item.url}">${item.title}</a></li>`).join('')}`;
+      </script>
+    </ul>
   </nav>
 </header>
 
 <main @raw="content" id="skip"></main>
 
-<!--- List every post in the project --->
 <h2>All Posts</h2>
-<script webc:type="js" webc:root>
-  `<ul>
-    ${collections.posts.map(item => `<li><a href="${item.url}"><code>${item.url}</code></a></li>`).join('')}
-  </ul>`;
-</script>
+<ul>
+  <script webc:type="js" webc:root>
+    `${collections.posts.map(item => `<li><a href="${item.url}"><code>${item.url}</code></a></li>`).join('')}`;
+  </script>
+</ul>
 
-<!--- List every content page in the project --->
 <h2>All Pages</h2>
-<script webc:type="js" webc:root>
-  `<ul>
-    ${collections.all.map(item => `<li><a href="${item.url}"><code>${item.url}</code></a></li>`).join('')}
-  </ul>`;
-</script>
+<ul>
+  <script webc:type="js" webc:root>
+    `${collections.all.map(item => `<li><a href="${item.url}"><code>${item.url}</code></a></li>`).join('')}`;
+  </script>
+</ul>
 
 <site-footer></site-footer>
 
