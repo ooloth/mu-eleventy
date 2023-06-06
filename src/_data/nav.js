@@ -5,4 +5,9 @@ module.exports = {
     { title: 'About', url: '/about/' },
     { title: 'Likes', url: '/likes/' },
   ],
+  bottom: [
+    { title: 'RSS', url: '/feed.xml' },
+    { title: 'GitHub', url: '' },
+    { title: 'Twitter', url: '' },
+  ],
 };
