@@ -4,7 +4,7 @@
   // If the current page's frontmatter includes a "title", put it before the site title
   // Must access data via $data in components (but not in layouts or top-level pages)
   // See: https://github.com/11ty/webc/issues/152
-  const metaTitle = title ? `${title} | ${$data.site.title}` : `${$data.site.title}`
+  const metaTitle = title ? `${title} | ${$data.site.title}` : `${$data.site.title}`;
 
-  ;`<title>${metaTitle}</title>`
+  `<title>${metaTitle}</title>`;
 </script>

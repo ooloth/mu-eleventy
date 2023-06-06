@@ -8,4 +8,4 @@ module.exports = {
     email: 'michaeluloth@gmail.com',
     url: 'https://michaeluloth.com/about/',
   },
-}
+};
