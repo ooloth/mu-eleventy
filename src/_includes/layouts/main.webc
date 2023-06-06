@@ -24,31 +24,23 @@ layout: layouts/root.webc
 
 <!-- List every post in the project -->
 <h2>All Posts</h2>
-<ul>
-  <!--
-  {%- for entry in collections.posts %}
-  <li>
-    <a href="{{ entry.url }}"
-      ><code>{{ entry.url }}</code></a
-    >
-  </li>
-  {%- endfor %}
-	-->
-</ul>
+<script webc:type="js" webc:root>
+  `<ul>
+    ${collections.posts
+      .map(item => `<li><a href="${item.url}"><code>${item.url}</code></a></li>`)
+      .join('')}
+  </ul>`;
+</script>
 
 <!-- List every content page in the project -->
 <h2>All Pages</h2>
-<ul>
-  <!--
-  {%- for entry in collections.all %}
-  <li>
-    <a href="{{ entry.url }}"
-      ><code>{{ entry.url }}</code></a
-    >
-  </li>
-  {%- endfor %}
-	-->
-</ul>
+<script webc:type="js" webc:root>
+  `<ul>
+    ${collections.all
+      .map(item => `<li><a href="${item.url}"><code>${item.url}</code></a></li>`)
+      .join('')}
+  </ul>`;
+</script>
 
 <site-footer></site-footer>
 
