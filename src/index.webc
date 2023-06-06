@@ -1,8 +1,5 @@
 ---
 layout: layouts/main.webc
-eleventyNavigation:
-  key: Home
-  order: 1
 numberOfLatestPostsToShow: 3
 ---
 

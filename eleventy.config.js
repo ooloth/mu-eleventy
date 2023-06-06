@@ -3,7 +3,7 @@ const markdownItAnchor = require('markdown-it-anchor');
 
 const { EleventyHtmlBasePlugin } = require('@11ty/eleventy');
 const pluginBundle = require('@11ty/eleventy-plugin-bundle');
-const pluginNavigation = require('@11ty/eleventy-navigation');
+// const pluginNavigation = require('@11ty/eleventy-navigation');
 const pluginRss = require('@11ty/eleventy-plugin-rss');
 const pluginSyntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 const pluginWebC = require('@11ty/eleventy-plugin-webc');
@@ -28,7 +28,7 @@ module.exports = function (eleventyConfig) {
   // Official plugins
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
   eleventyConfig.addPlugin(pluginBundle);
-  eleventyConfig.addPlugin(pluginNavigation);
+  // eleventyConfig.addPlugin(pluginNavigation);
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(pluginSyntaxHighlight, {
     preAttributes: { tabindex: 0 },
