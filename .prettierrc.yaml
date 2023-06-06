@@ -12,7 +12,7 @@ overrides:
       parser: 'html'
 # see: https://prettier.io/docs/en/plugins.html
 plugins: ['prettier-plugin-toml']
-printWidth: 100
+printWidth: 120
 proseWrap: preserve
 quoteProps: as-needed
 requirePragma: false
