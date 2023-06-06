@@ -2,21 +2,7 @@
 layout: layouts/root.webc
 ---
 
-<!-- <a href="#skip" class="visually-hidden">Skip to main content</a> -->
-
-<header>
-  <a href="/" @html="site.title"></a>
-
-  <nav>
-    <!-- <h2 class="visually-hidden">Top level navigation menu</h2> -->
-    <!--- {% if item.url == page.url %} aria-current="page" --->
-    <ul>
-      <script webc:type="js" webc:root>
-        `${$data.nav.top.map(item => `<li><a href="${item.url}">${item.title}</a></li>`).join('')}`;
-      </script>
-    </ul>
-  </nav>
-</header>
+<site-header></site-header>
 
 <main @raw="content" id="skip"></main>
 
