@@ -34,17 +34,10 @@ module.exports = function (eleventyConfig) {
     preAttributes: { tabindex: 0 },
   });
   eleventyConfig.addPlugin(pluginWebC, {
-    // Glob to find no-import global components
-    components: 'src/_includes/components/**/*.webc',
-
-    // Adds an Eleventy WebC transform to process all HTML output
-    useTransform: false,
-
-    // Additional global data used in the Eleventy WebC transform
-    transformData: {},
-
-    // Options passed to @11ty/eleventy-plugin-bundle
-    bundlePluginOptions: {},
+    bundlePluginOptions: {}, // options passed to @11ty/eleventy-plugin-bundle
+    components: 'src/_includes/components/**/*.webc', // glob to find no-import global components
+    transformData: {}, // additional global data used in the Eleventy WebC transform
+    useTransform: false, // adds an Eleventy WebC transform to process all HTML output
   });
 
   // Local plugins
