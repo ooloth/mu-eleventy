@@ -5,6 +5,11 @@ endOfLine: lf
 htmlWhitespaceSensitivity: css
 insertPragma: false
 jsxSingleQuote: false
+# see: https://prettier.io/docs/en/configuration.html#setting-the-parserdocsenoptionshtmlparser-option
+overrides:
+  - files: ['*.webc']
+    options:
+      parser: 'html'
 # see: https://prettier.io/docs/en/plugins.html
 plugins: ['prettier-plugin-toml']
 printWidth: 100
