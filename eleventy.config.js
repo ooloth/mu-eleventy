@@ -45,12 +45,14 @@ module.exports = function (eleventyConfig) {
   // Collections
   eleventyConfig.addCollection('posts', function (collectionApi) {
     // See: https://www.11ty.dev/docs/collections/#getfilteredbyglob(-glob-)
-    return collectionApi.getFilteredByGlob('src/content/posts/**/*.md');
+    return collectionApi.getFilteredByGlob('src/content/posts/**/*.md').reverse();
   });
 
   eleventyConfig.addCollection('notes', function (collectionApi) {
     // See: https://www.11ty.dev/docs/collections/#getfilteredbyglob(-glob-)
-    return collectionApi.getFilteredByGlob('src/content/topics/*.md');
+    return collectionApi.getFilteredByGlob('src/content/topics/*.md').sort(function (a, b) {
+      return a.inputPath.localeCompare(b.inputPath); // sort by path - ascending
+    });
   });
 
   // Extensions
