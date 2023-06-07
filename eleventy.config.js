@@ -50,7 +50,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addCollection('notes', function (collectionApi) {
     // See: https://www.11ty.dev/docs/collections/#getfilteredbyglob(-glob-)
-    return collectionApi.getFilteredByGlob('src/content/topics/*.md').sort(function (a, b) {
+    return collectionApi.getFilteredByGlob('src/content/notes/*.md').sort(function (a, b) {
       return a.inputPath.localeCompare(b.inputPath); // sort by path - ascending
     });
   });
