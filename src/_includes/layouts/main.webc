@@ -2,6 +2,7 @@
 layout: root.webc
 ---
 
+<!-- <a href="#skip" class="visually-hidden">Skip to main content</a> -->
 <site-header></site-header>
 
 <main @raw="content" id="skip"></main>
@@ -11,11 +12,11 @@ layout: root.webc
 <hr />
 
 <h2>All Posts</h2>
-<ul>
+<ol reversed>
   <script webc:type="js" webc:root>
     `${collections.posts.map(item => `<li><a href="${item.url}"><code>${item.url}</code></a></li>`).join('')}`;
   </script>
-</ul>
+</ol>
 
 <h2>All Pages</h2>
 <ul>
