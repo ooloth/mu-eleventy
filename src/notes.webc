@@ -1,0 +1,18 @@
+---
+layout: layouts/main.webc
+---
+
+<h1>Notes</h1>
+
+<section>
+  <h2>Topics</h2>
+  <ul>
+    <script webc:type="js" webc:root>
+      `${collections.notes
+        .map(note => `<li> <a href="${note.url}">${note.data.title || note.url}</a> </li>`)
+        .join('')}`;
+    </script>
+  </ul>
+</section>
+
+<!-- {%- css %}.postlist { counter-reset: start-from {{ (postslistCounter or postslist.length) + 1 }} }{% endcss %} -->
