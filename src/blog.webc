@@ -9,12 +9,11 @@ layout: layouts/main.webc
   <ol reversed>
     <script webc:type="js" webc:root>
       `${collections.posts
-        .reverse()
         .map(
           post =>
             `<li>
               <time datetime="${htmlDateString(post.date)}">${readableDate(post.date)}</time>
-              <a href="${post.url}" target="_blank">${post.data.title}</a>
+              <a href="${post.url}">${post.data.title}</a>
             </li>`,
         )
         .join('')}`;
