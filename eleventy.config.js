@@ -3,7 +3,6 @@ const markdownItAnchor = require('markdown-it-anchor');
 
 const { EleventyHtmlBasePlugin } = require('@11ty/eleventy');
 const pluginBundle = require('@11ty/eleventy-plugin-bundle');
-// const pluginNavigation = require('@11ty/eleventy-navigation');
 const pluginRss = require('@11ty/eleventy-plugin-rss');
 const pluginSyntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 const pluginWebC = require('@11ty/eleventy-plugin-webc');
@@ -28,7 +27,6 @@ module.exports = function (eleventyConfig) {
   // Official plugins
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
   eleventyConfig.addPlugin(pluginBundle);
-  // eleventyConfig.addPlugin(pluginNavigation);
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(pluginSyntaxHighlight, {
     preAttributes: { tabindex: 0 },
@@ -75,20 +73,13 @@ module.exports = function (eleventyConfig) {
 
   // Get the first `n` elements of a collection.
   eleventyConfig.addFilter('head', (array, n) => {
-    if (!Array.isArray(array) || array.length === 0) {
-      return [];
-    }
-    if (n < 0) {
-      return array.slice(n);
-    }
-
+    if (!Array.isArray(array) || array.length === 0) return [];
+    if (n < 0) return array.slice(n);
     return array.slice(0, n);
   });
 
   // Return the smallest number argument
-  eleventyConfig.addFilter('min', (...numbers) => {
-    return Math.min.apply(null, numbers);
-  });
+  eleventyConfig.addFilter('min', (...numbers) => Math.min.apply(null, numbers));
 
   // Return all the tags used in a collection
   eleventyConfig.addFilter('getAllTags', collection => {
@@ -99,9 +90,9 @@ module.exports = function (eleventyConfig) {
     return Array.from(tagSet);
   });
 
-  eleventyConfig.addFilter('filterTagList', function filterTagList(tags) {
-    return (tags || []).filter(tag => ['all', 'nav', 'post', 'posts'].indexOf(tag) === -1);
-  });
+  eleventyConfig.addFilter('filterTagList', tags =>
+    (tags || []).filter(tag => ['all', 'nav', 'post', 'posts'].indexOf(tag) === -1),
+  );
 
   // Customize Markdown library settings:
   eleventyConfig.amendLibrary('md', mdLib => {
@@ -141,7 +132,7 @@ module.exports = function (eleventyConfig) {
       input: 'src', // default: "."
       includes: '_includes', // relative to input dir
       data: '_data', // relative to input dir
-      output: '_site', // ./_site
+      output: '_site', // relative to root
     },
 
     // -----------------------------------------------------------------
