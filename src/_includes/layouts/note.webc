@@ -1,7 +1,0 @@
----
-layout: main.webc
----
-
-<div @raw="content"></div>
-
-<hr />
