@@ -6,6 +6,10 @@ layout: root.webc
 
 <main @raw="content" id="skip"></main>
 
+<site-footer></site-footer>
+
+<hr />
+
 <h2>All Posts</h2>
 <ul>
   <script webc:type="js" webc:root>
@@ -19,7 +23,5 @@ layout: root.webc
     `${collections.all.map(item => `<li><a href="${item.url}"><code>${item.url}</code></a></li>`).join('')}`;
   </script>
 </ul>
-
-<site-footer></site-footer>
 
 <!-- Current page: {{ page.url | htmlBaseUrl }} -->
