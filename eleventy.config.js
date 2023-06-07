@@ -7,8 +7,8 @@ const pluginRss = require('@11ty/eleventy-plugin-rss');
 const pluginSyntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 const pluginWebC = require('@11ty/eleventy-plugin-webc');
 
-const pluginDrafts = require('./.eleventy.config.drafts.js');
-const pluginImages = require('./.eleventy.config.images.js');
+const pluginDrafts = require('./eleventy.config.drafts.js');
+const pluginImages = require('./eleventy.config.images.js');
 
 module.exports = function (eleventyConfig) {
   // Copy the contents of the `public` folder to the output folder
