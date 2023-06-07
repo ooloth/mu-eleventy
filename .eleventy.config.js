@@ -7,8 +7,8 @@ const pluginRss = require('@11ty/eleventy-plugin-rss');
 const pluginSyntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 const pluginWebC = require('@11ty/eleventy-plugin-webc');
 
-const pluginDrafts = require('./eleventy.config.drafts.js');
-const pluginImages = require('./eleventy.config.images.js');
+const pluginDrafts = require('./.eleventy.config.drafts.js');
+const pluginImages = require('./.eleventy.config.images.js');
 
 module.exports = function (eleventyConfig) {
   // Copy the contents of the `public` folder to the output folder
@@ -43,12 +43,22 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(pluginImages);
 
   // Collections
-  eleventyConfig.addCollection('posts', function (collectionApi) {
+  eleventyConfig.addCollection('posts', collectionApi => {
     // See: https://www.11ty.dev/docs/collections/#getfilteredbyglob(-glob-)
-    return collectionApi.getFilteredByGlob('src/content/posts/**/*.md').reverse();
+    const writing = collectionApi
+      .getFilteredByGlob('src/content/posts/**/*.md')
+      .filter(item => item.data.category === 'posts');
+
+    // writing.forEach((item, index) => {
+    //   console.log('item', item);
+    // });
+
+    return writing.reverse();
+
+    // return collectionApi.getFilteredByGlob('src/content/posts/**/*.md').reverse();
   });
 
-  eleventyConfig.addCollection('notes', function (collectionApi) {
+  eleventyConfig.addCollection('notes', collectionApi => {
     // See: https://www.11ty.dev/docs/collections/#getfilteredbyglob(-glob-)
     return collectionApi.getFilteredByGlob('src/content/notes/*.md').sort(function (a, b) {
       return a.inputPath.localeCompare(b.inputPath); // sort by path - ascending
