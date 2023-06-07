@@ -1,6 +1,6 @@
 ---
 permalink: /tags/
-layout: layouts/main.webc
+layout: main.webc
 ---
 
 <h1>Tags</h1>

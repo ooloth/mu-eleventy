@@ -1,5 +1,5 @@
 ---
-layout: layouts/main.webc
+layout: main.webc
 permalink: 404.html
 eleventyExcludeFromCollections: true
 ---

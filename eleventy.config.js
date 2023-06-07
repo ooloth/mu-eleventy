@@ -134,6 +134,7 @@ module.exports = function (eleventyConfig) {
       input: 'src', // default: "."
       includes: '_includes', // relative to input dir
       data: '_data', // relative to input dir
+      layouts: '_includes/layouts', // relative to input dir
       output: '_site', // relative to root
     },
 

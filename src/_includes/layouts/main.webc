@@ -1,5 +1,5 @@
 ---
-layout: layouts/root.webc
+layout: root.webc
 ---
 
 <site-header></site-header>
