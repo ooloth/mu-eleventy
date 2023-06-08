@@ -11,10 +11,31 @@ layout: root.webc
 
 <hr />
 
-<h2>All Posts</h2>
+<h2>Pages</h2>
+<ul>
+  <script webc:type="js" webc:root>
+    `${collections.pages.map(page => `<li><a href="${page.url}"><code>${page.url}</code></a></li>`).join('')}`;
+  </script>
+</ul>
+
+<h2>Posts</h2>
 <ol reversed>
   <script webc:type="js" webc:root>
-    `${collections.posts.map(item => `<li><a href="${item.url}"><code>${item.url}</code></a></li>`).join('')}`;
+    `${collections.posts.map(post => `<li><a href="${post.url}"><code>${post.url}</code></a></li>`).join('')}`;
+  </script>
+</ol>
+
+<h2>Notes</h2>
+<ul>
+  <script webc:type="js" webc:root>
+    `${collections.notes.map(note => `<li><a href="${note.url}"><code>${note.url}</code></a></li>`).join('')}`;
+  </script>
+</ul>
+
+<h2>Timeline</h2>
+<ol reversed>
+  <script webc:type="js" webc:root>
+    `${collections.timeline.map(year => `<li><code>${year.data.year}</code></li>`).join('')}`;
   </script>
 </ol>
 
