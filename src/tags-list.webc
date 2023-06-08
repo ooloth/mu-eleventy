@@ -1,6 +1,6 @@
 ---
-permalink: /tags/
 layout: main.webc
+permalink: /tags/
 ---
 
 <h1>Tags</h1>

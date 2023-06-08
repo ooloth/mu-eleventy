@@ -1,0 +1,3 @@
+destination: page
+layout: 'main.webc'
+permalink: '{{ page.fileSlug }}'

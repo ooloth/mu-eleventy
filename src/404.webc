@@ -1,7 +1,7 @@
 ---
+eleventyExcludeFromCollections: true
 layout: main.webc
 permalink: 404.html
-eleventyExcludeFromCollections: true
 ---
 
 <h1>Content not found.</h1>
