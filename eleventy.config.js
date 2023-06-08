@@ -42,35 +42,30 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(pluginDrafts);
   eleventyConfig.addPlugin(pluginImages);
 
-  // Collections
-  eleventyConfig.addCollection('posts', collectionApi => {
-    // See: https://www.11ty.dev/docs/collections/#getfilteredbyglob(-glob-)
-    const writing = collectionApi
-      .getFilteredByGlob('src/content/posts/**/*.md')
-      .filter(item => item.data.category === 'posts');
+  // Posts in reverse chronological order
+  // See: https://www.11ty.dev/docs/collections/#getfilteredbyglob(-glob-)
+  eleventyConfig.addCollection('posts', collectionApi =>
+    collectionApi
+      .getFilteredByGlob('src/content/writing/**/*.md')
+      .reverse()
+      .filter(item => item.data.destination === 'blog'),
+  );
 
-    // writing.forEach((item, index) => {
-    //   console.log('item', item);
-    // });
-
-    return writing.reverse();
-
-    // return collectionApi.getFilteredByGlob('src/content/posts/**/*.md').reverse();
-  });
-
-  eleventyConfig.addCollection('notes', collectionApi => {
-    // See: https://www.11ty.dev/docs/collections/#getfilteredbyglob(-glob-)
-    return collectionApi.getFilteredByGlob('src/content/notes/*.md').sort(function (a, b) {
-      return a.inputPath.localeCompare(b.inputPath); // sort by path - ascending
-    });
-  });
+  // Notes in alphabetical order
+  // See: https://www.11ty.dev/docs/collections/#getfilteredbyglob(-glob-)
+  eleventyConfig.addCollection('notes', collectionApi =>
+    collectionApi
+      .getFilteredByGlob('src/content/writing/**/*.md')
+      .filter(item => item.data.destination !== 'blog')
+      .sort((a, b) => a.inputPath.localeCompare(b.inputPath)),
+  );
 
   // Extensions
   // See: https://www.11ty.dev/docs/languages/custom/#aliasing-an-existing-template-language
   // See: https://gist.github.com/zachleat/b274ee939759b032bc320be1a03704a2
-  eleventyConfig.addExtension(['11ty.ts', '11ty.tsx'], {
-    key: '11ty.js',
-  });
+  // eleventyConfig.addExtension(['11ty.ts', '11ty.tsx'], {
+  // key: '11ty.js',
+  // });
 
   // Filters
   eleventyConfig.addFilter('readableDate', (dateObj, format, zone) => {
