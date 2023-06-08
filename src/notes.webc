@@ -9,17 +9,17 @@ layout: main.webc
   <ul>
     <!--- see: https://www.11ty.dev/docs/data-eleventy-supplied/#fileslug --->
     <script webc:type="js" webc:root>
+      const getLinkText = item => item.data.title || item.fileSlug;
+
       `${collections.notes
         .map(note => {
-          const parentContent = note.data.title || note.fileSlug;
-          const children = note.children || [];
-          const childrenContent = children.length
-            ? `<ul>${children
-                .map(child => `<li><a href="${child.url}">${child.data.title || child.fileSlug}</a></li>`)
+          const children = note.children.length
+            ? `<ul>${note.children
+                .map(child => `<li><a href="${child.url}">${getLinkText(child)}</a></li>`)
                 .join('')}</ul>`
             : '';
 
-          return `<li><a href="${note.url}">${parentContent}${childrenContent}</a></li>`;
+          return `<li><a href="${note.url}">${getLinkText(note)}${children}</a></li>`;
         })
         .join('')}`;
     </script>
