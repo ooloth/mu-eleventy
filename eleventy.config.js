@@ -11,6 +11,36 @@ const pluginWebC = require('@11ty/eleventy-plugin-webc');
 const pluginDrafts = require('./eleventy.config.drafts.js');
 const pluginImages = require('./eleventy.config.images.js');
 
+function nestChildObjectsUnderParents(object) {
+  const tree = {};
+  const roots = [];
+
+  // Initialize every item and index by its title
+  object.forEach(item => {
+    item.children = []; // Add an empty array for the children if it does not already exist
+    tree[item.title] = item; // Index each item by its title
+  });
+
+  console.log('object', object);
+
+  // Connect children with their parents and separate the roots
+  object.forEach(item => {
+    // If there is a parent, push the current item into its parent's children array
+    if (item.data.parent) {
+      if (!tree[item.data.parent]) {
+        console.log(`tree does not contain ${item.data.parent}`);
+      }
+      tree[item.data.parent].children.push(item);
+    }
+    // If there is no parent, the item is a root and is pushed into the roots array
+    else roots.push(item);
+  });
+
+  // console.log('tree', tree);
+  // console.log('roots', roots);
+  return roots;
+}
+
 module.exports = function (eleventyConfig) {
   // Copy the contents of the `public` folder to the output folder
   // For example, `./public/styles/` ends up in `_site/styles/`
@@ -56,11 +86,14 @@ module.exports = function (eleventyConfig) {
 
   // Notes in alphabetical order
   // See: https://www.11ty.dev/docs/collections/#getfilteredbyglob(-glob-)
-  eleventyConfig.addCollection('notes', collectionApi =>
-    collectionApi
+  eleventyConfig.addCollection('notes', collectionApi => {
+    const notes = collectionApi
       .getFilteredByGlob('src/content/writing/**/*.md')
       .filter(item => item.data.destination !== 'blog')
-      .sort((a, b) => a.inputPath.localeCompare(b.inputPath)),
+      .sort((a, b) => a.inputPath.localeCompare(b.inputPath));
+
+    return nestChildObjectsUnderParents(notes);
+  });
   );
 
   // Data extensions
