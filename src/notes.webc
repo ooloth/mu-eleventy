@@ -3,13 +3,24 @@ layout: main.webc
 ---
 
 <h1>Notes</h1>
+
 <section>
   <h2>Topics</h2>
   <ul>
     <!--- see: https://www.11ty.dev/docs/data-eleventy-supplied/#fileslug --->
     <script webc:type="js" webc:root>
       `${collections.notes
-        .map(note => `<li><a href="${note.url}">${note.data.title || note.fileSlug}</a></li>`)
+        .map(note => {
+          const parentContent = note.data.title || note.fileSlug;
+          const children = note.children || [];
+          const childrenContent = children.length
+            ? `<ul>${children
+                .map(child => `<li><a href="${child.url}">${child.data.title || child.fileSlug}</a></li>`)
+                .join('')}</ul>`
+            : '';
+
+          return `<li><a href="${note.url}">${parentContent}${childrenContent}</a></li>`;
+        })
         .join('')}`;
     </script>
   </ul>
