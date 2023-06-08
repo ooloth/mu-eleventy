@@ -9,7 +9,7 @@ layout: main.webc
     <!--- see: https://www.11ty.dev/docs/data-eleventy-supplied/#fileslug --->
     <script webc:type="js" webc:root>
       `${collections.notes
-        .map(note => `<li> <a href="${note.url}">${note.data.title || note.fileSlug}</a> </li>`)
+        .map(note => `<li><a href="${note.url}">${note.data.title || note.fileSlug}</a></li>`)
         .join('')}`;
     </script>
   </ul>
