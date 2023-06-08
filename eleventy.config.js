@@ -1,5 +1,6 @@
 const { DateTime } = require('luxon');
 const markdownItAnchor = require('markdown-it-anchor');
+const yaml = require('js-yaml');
 
 const { EleventyHtmlBasePlugin } = require('@11ty/eleventy');
 const pluginBundle = require('@11ty/eleventy-plugin-bundle');
@@ -42,6 +43,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(pluginDrafts);
   eleventyConfig.addPlugin(pluginImages);
 
+  // Collections
+
   // Posts in reverse chronological order
   // See: https://www.11ty.dev/docs/collections/#getfilteredbyglob(-glob-)
   eleventyConfig.addCollection('posts', collectionApi =>
@@ -60,7 +63,11 @@ module.exports = function (eleventyConfig) {
       .sort((a, b) => a.inputPath.localeCompare(b.inputPath)),
   );
 
+  // Data extensions
+  eleventyConfig.addDataExtension('yaml', contents => yaml.load(contents));
+
   // Extensions
+
   // See: https://www.11ty.dev/docs/languages/custom/#aliasing-an-existing-template-language
   // See: https://gist.github.com/zachleat/b274ee939759b032bc320be1a03704a2
   // eleventyConfig.addExtension(['11ty.ts', '11ty.tsx'], {
