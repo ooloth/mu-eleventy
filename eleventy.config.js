@@ -18,7 +18,7 @@ function nestChildObjectsUnderParents(object) {
   // Initialize every item and index by its title
   object.forEach(item => {
     item.children = []; // Add an empty array for the children if it does not already exist
-    tree[item.data.title] = item; // Index each item by its title
+    tree[item.fileSlug] = item; // Index each item by its file slug
   });
 
   // Connect children with their parents and separate the roots
