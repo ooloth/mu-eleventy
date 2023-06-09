@@ -21,6 +21,10 @@ jobs:
     name: Rebuild site
     steps:
       - uses: actions/checkout@v3
+        with:
+          repository: ooloth/mu-11ty
+          token: ${{ secrets.ACTIONS_TOKEN }}
+          submodules: recursive
       - uses: actions/setup-node@v3
         with:
           node-version-file: '.nvmrc'
