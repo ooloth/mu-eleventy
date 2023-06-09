@@ -74,6 +74,7 @@ module.exports = function (eleventyConfig) {
   // Collections
 
   // Posts in reverse chronological order
+  // TODO: in production, filter out posts without a past date
   // See: https://www.11ty.dev/docs/collections/#getfilteredbyglob(-glob-)
   eleventyConfig.addCollection('posts', collectionApi =>
     collectionApi
@@ -83,6 +84,7 @@ module.exports = function (eleventyConfig) {
   );
 
   // Notes in alphabetical order
+  // TODO: in production, filter out private notes
   // See: https://www.11ty.dev/docs/collections/#getfilteredbyglob(-glob-)
   eleventyConfig.addCollection('notes', collectionApi => {
     const notes = collectionApi
