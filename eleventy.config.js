@@ -8,8 +8,8 @@ const pluginRss = require('@11ty/eleventy-plugin-rss');
 const pluginSyntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 const pluginWebC = require('@11ty/eleventy-plugin-webc');
 
-const pluginDrafts = require('./eleventy.config.drafts.js');
-const pluginImages = require('./eleventy.config.images.js');
+// const pluginDrafts = require('./eleventy.config.drafts.js');
+// const pluginImages = require('./eleventy.config.images.js');
 
 function nestChildObjectsUnderParents(object) {
   const tree = {};
@@ -68,8 +68,8 @@ module.exports = function (eleventyConfig) {
   });
 
   // Local plugins
-  eleventyConfig.addPlugin(pluginDrafts);
-  eleventyConfig.addPlugin(pluginImages);
+  // eleventyConfig.addPlugin(pluginDrafts);
+  // eleventyConfig.addPlugin(pluginImages);
 
   // Collections
 
