@@ -2,7 +2,7 @@
 layout: main.webc
 ---
 
-<article @raw="content"></article>
+<article @raw="content" class="prose lg:prose-xl"></article>
 
 <hr />
 
