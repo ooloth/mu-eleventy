@@ -3,12 +3,44 @@ layout: root.webc
 ---
 
 <div class="flex flex-col p-3 min-h-screen">
-  <!-- <a href="#skip" class="visually-hidden">Skip to main content</a> -->
-  <site-header></site-header>
+  <!--- Main header --->
+  <header class="mb-8">
+    <!-- <a href="#skip" class="visually-hidden">Skip to main content</a> -->
+    <nav>
+      <h2 class="sr-only">Top level navigation menu</h2>
+      <!--- {% if item.url == page.url %} aria-current="page" --->
+      <ul class="flex flex-wrap">
+        <li class="w-full font-bold"><a href="/" @html="$data.site.title"></a></li>
+        <script webc:type="js" webc:root>
+          `${$data.nav.top
+            .map(item => `<li class="me-3 lowercase"><a href="${item.url}">${item.title}</a></li>`)
+            .join('')}`;
+        </script>
+      </ul>
+    </nav>
+  </header>
 
+  <!--- Main content --->
   <main @raw="content" id="skip" class="flex-1"></main>
 
-  <site-footer></site-footer>
+  <!--- Main footer --->
+  <footer class="flex flex-wrap justify-between text-center">
+    <p>
+      <script webc:type="js">
+        `&copy; ${new Date().getFullYear()} Michael Uloth`;
+      </script>
+    </p>
+
+    <nav>
+      <ul class="flex flex-wrap justify-start">
+        <script webc:type="js" webc:root>
+          `${$data.nav.bottom
+            .map(item => `<li class="me-3"><a href="${item.url}" target="_blank">${item.title}</a></li>`)
+            .join('')}`;
+        </script>
+      </ul>
+    </nav>
+  </footer>
 </div>
 
 <hr />

@@ -1,5 +1,0 @@
-<script webc:type="js">
-  const now = new Date();
-
-  `&copy; ${now.getFullYear()} Michael Uloth`;
-</script>
