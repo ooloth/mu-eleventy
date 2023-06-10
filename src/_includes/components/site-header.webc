@@ -1,11 +1,11 @@
-<header>
+<header class="mb-8">
   <nav>
     <!-- <h2 class="visually-hidden">Top level navigation menu</h2> -->
     <!--- {% if item.url == page.url %} aria-current="page" --->
-    <ul>
-      <li><a href="/" @html="$data.site.title"></a></li>
+    <ul class="flex flex-wrap">
+      <li class="w-full font-bold"><a href="/" @html="$data.site.title"></a></li>
       <script webc:type="js" webc:root>
-        `${$data.nav.top.map(item => `<li><a href="${item.url}">${item.title}</a></li>`).join('')}`;
+        `${$data.nav.top.map(item => `<li class="me-3"><a href="${item.url}">${item.title}</a></li>`).join('')}`;
       </script>
     </ul>
   </nav>
