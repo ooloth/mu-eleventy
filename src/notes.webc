@@ -6,7 +6,7 @@ layout: main.webc
 
 <section>
   <h2>Topics</h2>
-  <ul>
+  <ul class="columns-2xs">
     <!--- see: https://www.11ty.dev/docs/data-eleventy-supplied/#fileslug --->
     <script webc:type="js" webc:root>
       const getLinkText = item => item.data.title || item.fileSlug;
@@ -14,12 +14,19 @@ layout: main.webc
       `${collections.notes
         .map(note => {
           const children = note.children.length
-            ? `<ul>${note.children
-                .map(child => `<li><a href="${child.url}">${getLinkText(child)}</a></li>`)
+            ? `<ul class="">${note.children
+                .map(
+                  child =>
+                    `<li class="before:content-['└'] before:pe-[0.3rem]"><a href="${child.url}">${getLinkText(
+                      child,
+                    )}</a></li>`,
+                )
                 .join('')}</ul>`
             : '';
 
-          return `<li><a href="${note.url}">${getLinkText(note)}${children}</a></li>`;
+          return `<li class="pt-0.75 break-inside-avoid-column"><a href="${note.url}">${getLinkText(
+            note,
+          )}${children}</a></li>`;
         })
         .join('')}`;
     </script>
