@@ -1,13 +1,13 @@
 module.exports = {
   top: [
-    { title: 'Blog', url: '/blog/' },
-    { title: 'Notes', url: '/notes/' },
-    { title: 'About', url: '/about' },
-    { title: 'Likes', url: '/likes/' },
+    { title: 'blog', url: '/blog/' },
+    { title: 'notes', url: '/notes/' },
+    { title: 'about', url: '/about' },
+    { title: 'likes', url: '/likes/' },
   ],
   bottom: [
     { title: 'RSS', url: '/feed.xml' },
-    { title: 'GitHub', url: '' },
     { title: 'Twitter', url: '' },
+    { title: 'GitHub', url: '' },
   ],
 };

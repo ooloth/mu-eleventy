@@ -4,10 +4,11 @@ title: Blog
 description: Blog posts and such
 ---
 
-<h1>Blog</h1>
+<h1 class="sr-only">Blog</h1>
 
 <section>
-  <h2>Latest Posts</h2>
+  <h2 class="sr-only">Latest Posts</h2>
+
   <ol reversed>
     <script webc:type="js" webc:root>
       `${collections.posts

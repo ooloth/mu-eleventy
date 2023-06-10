@@ -2,9 +2,7 @@
 layout: main.webc
 ---
 
-<article @raw="content" class="prose lg:prose-xl"></article>
-
-<hr />
+<article @raw="content" class="prose"></article>
 
 <!--
 {# Only include the syntax highlighter CSS on blog posts #} {%- css %}{% include
