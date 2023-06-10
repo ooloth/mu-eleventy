@@ -1,5 +1,7 @@
 ---
 layout: main.webc
+title: Blog
+description: Blog posts and such
 ---
 
 <h1>Blog</h1>
