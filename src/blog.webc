@@ -14,7 +14,7 @@ description: Blog posts and such
       `${collections.posts
         .map(
           post =>
-            `<li class="flex flex-col pt-8 md:flex-row md:items-baseline">
+            `<li class="flex flex-col pt-7 md:flex-row md:items-baseline">
               <time datetime="${htmlDateString(
                 post.date,
               )}" class="text-[0.85rem] md:text-base uppercase md:min-w-[10rem] text-slate-600">${readableDate(
