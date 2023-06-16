@@ -2,14 +2,14 @@
 layout: root.webc
 ---
 
-<div class="flex flex-col py-6 px-5 min-h-screen text-neutral-800 dark:bg-neutral-900 dark:text-neutral-100">
+<div class="flex flex-col py-6 px-5 min-h-screen bg-neutral-900 text-neutral-300">
   <!--- Main header --->
   <header class="mb-8">
     <!-- <a href="#skip" class="visually-hidden">Skip to main content</a> -->
     <nav>
       <h2 class="sr-only">Top level navigation menu</h2>
       <!--- {% if item.url == page.url %} aria-current="page" --->
-      <ul class="flex flex-wrap">
+      <ul class="flex flex-wrap text-neutral-100">
         <li class="pb-1 w-full text-lg font-semibold"><a href="/" @html="$data.site.title"></a></li>
         <script webc:type="js" webc:root>
           `${$data.nav.top
