@@ -14,11 +14,17 @@ description: Blog posts and such
       `${collections.posts
         .map(
           post =>
-            `<li class="flex flex-col pt-4 md:flex-row md:items-baseline">
-              <time datetime="${htmlDateString(post.date)}" class="text-sm uppercase md:min-w-[10rem]">${readableDate(
+            `<li class="flex flex-col pt-5 md:flex-row md:items-baseline">
+              <time datetime="${htmlDateString(
+                post.date,
+              )}" class="text-[0.85rem] md:text-base uppercase md:min-w-[10rem] text-slate-600">${readableDate(
               post.date,
             )}</time>
-              <a href="${post.url}">${post.data.title || post.fileSlug}</a>
+              <a href="${
+                post.url
+              }" class="text-xl text-slate-800 underline underline-offset-4 decoration-4 decoration-slate-300 hover:decoration-rose-400">${
+              post.data.title || post.fileSlug
+            }</a>
             </li>`,
         )
         .join('')}`;
