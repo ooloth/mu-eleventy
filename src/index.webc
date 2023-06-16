@@ -13,7 +13,7 @@ description: todo
       `${collections.posts
         .map(
           post =>
-            `<li class="flex flex-col pt-7 md:flex-row md:items-baseline">
+            `<li class="flex flex-col mt-7 md:flex-row md:items-baseline">
               <time datetime="${htmlDateString(
                 post.date,
               )}" class="text-[0.85rem] md:text-base uppercase md:min-w-[10rem]">${readableDate(
@@ -30,6 +30,3 @@ description: todo
     </script>
   </ol>
 </section>
-
-<!-- {%- css %}.postlist { counter-reset: start-from {{ (postslistCounter or postslist.length) + 1 }} }{% endcss %} -->
-
