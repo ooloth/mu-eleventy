@@ -24,7 +24,7 @@ layout: root.webc
   <main @raw="content" id="skip" class="flex-1"></main>
 
   <!--- Main footer --->
-  <footer class="flex flex-wrap justify-between mt-8 text-center">
+  <footer class="flex flex-col items-center md:flex-row md:items-baseline md:justify-between mt-8 text-center">
     <p>
       <script webc:type="js">
         `&copy; ${new Date().getFullYear()} Michael Uloth`;
