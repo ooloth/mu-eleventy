@@ -17,5 +17,5 @@
     <link rel="alternate" href="/feed.xml" type="application/atom+xml" title="${site.title}" />
     <link rel="alternate" href="/feed.json" type="application/json" title="${site.title}" />
   </head>
-  <body @raw="content" class="py-6 px-5 min-h-screen bg-neutral-950 text-neutral-300"></body>
+  <body @raw="content" class="py-6 px-5 min-h-screen bg-neutral-900 text-neutral-300"></body>
 </html>

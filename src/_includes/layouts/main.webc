@@ -9,7 +9,7 @@ layout: root.webc
     <nav>
       <h2 class="sr-only">Top level navigation menu</h2>
       <!--- {% if item.url == page.url %} aria-current="page" --->
-      <ul class="flex flex-wrap text-neutral-100">
+      <ul class="flex flex-wrap text-neutral-50">
         <li class="pb-1 w-full text-lg font-semibold"><a href="/" @html="$data.site.title"></a></li>
         <script webc:type="js" webc:root>
           `${$data.nav.top

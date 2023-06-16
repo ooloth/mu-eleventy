@@ -22,7 +22,7 @@ description: Blog posts and such
             )}</time>
               <a href="${
                 post.url
-              }" class="text-xl text-neutral-100 underline underline-offset-4 decoration-4 decoration-rose-400 hover:decoration-neutral-100">${
+              }" class="text-xl text-neutral-50 underline underline-offset-4 decoration-4 decoration-rose-400 hover:decoration-neutral-100">${
               post.data.title || post.fileSlug
             }</a>
             </li>`,
