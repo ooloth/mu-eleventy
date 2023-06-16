@@ -9,6 +9,7 @@ layout: root.webc
     <nav>
       <h2 class="sr-only">Top level navigation menu</h2>
       <!--- {% if item.url == page.url %} aria-current="page" --->
+      <!-- Current page: htmlBaseUrl(page.url) -->
       <ul class="flex flex-wrap text-neutral-50">
         <li class="pb-1 w-full text-lg font-semibold"><a href="/" @html="$data.site.title"></a></li>
         <script webc:type="js" webc:root>
@@ -24,7 +25,7 @@ layout: root.webc
   <main @raw="content" id="skip" class="flex-1"></main>
 
   <!--- Main footer --->
-  <footer class="flex flex-col items-center md:flex-row md:items-baseline md:justify-between mt-12 text-center text-slate-50">
+  <footer class="flex flex-col items-center md:flex-row md:items-baseline md:justify-between mt-12 text-center text-lg text-slate-50">
     <p>
       <script webc:type="js">
         `&copy; ${new Date().getFullYear()} Michael Uloth`;
@@ -45,39 +46,37 @@ layout: root.webc
 
 <hr class="mt-12"/>
 
-<h2>Pages</h2>
+<h2 class="mt-12 text-xl">Pages</h2>
 <ul>
   <script webc:type="js" webc:root>
     `${collections.pages.map(page => `<li><a href="${page.url}"><code>${page.url}</code></a></li>`).join('')}`;
   </script>
 </ul>
 
-<h2>Posts</h2>
+<h2 class="mt-12 text-xl">Posts</h2>
 <ol reversed>
   <script webc:type="js" webc:root>
     `${collections.posts.map(post => `<li><a href="${post.url}"><code>${post.url}</code></a></li>`).join('')}`;
   </script>
 </ol>
 
-<h2>Notes</h2>
+<h2 class="mt-12 text-xl">Notes</h2>
 <ul>
   <script webc:type="js" webc:root>
     `${collections.notes.map(note => `<li><a href="${note.url}"><code>${note.url}</code></a></li>`).join('')}`;
   </script>
 </ul>
 
-<h2>Timeline</h2>
+<h2 class="mt-12 text-xl">Timeline</h2>
 <ol reversed>
   <script webc:type="js" webc:root>
     `${collections.timeline.map(year => `<li><code>${year.data.year}</code></li>`).join('')}`;
   </script>
 </ol>
 
-<h2>All Pages</h2>
+<h2 class="mt-12 text-xl">All Pages</h2>
 <ul>
   <script webc:type="js" webc:root>
     `${collections.all.map(item => `<li><a href="${item.url}"><code>${item.url}</code></a></li>`).join('')}`;
   </script>
 </ul>
-
-<!-- Current page: {{ page.url | htmlBaseUrl }} -->
