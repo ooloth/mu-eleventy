@@ -3,6 +3,7 @@ layout: root.webc
 ---
 
 <div class="flex flex-col">
+  <!-- <div class="flex flex-col items-center max-w-screen-lg mx-auto"> -->
   <!--- Main header --->
   <header class="mb-12">
     <!-- <a href="#skip" class="visually-hidden">Skip to main content</a> -->
@@ -25,14 +26,16 @@ layout: root.webc
   <main @raw="content" id="skip" class="flex-1"></main>
 
   <!--- Main footer --->
-  <footer class="flex flex-col items-center md:flex-row md:items-baseline md:justify-between mt-12 text-center text-lg text-slate-50">
+  <footer
+    class="flex flex-col items-center md:flex-row md:items-baseline md:justify-between mt-24 text-center text-lg text-slate-50"
+  >
     <p>
       <script webc:type="js">
         `&copy; ${new Date().getFullYear()} Michael Uloth`;
       </script>
     </p>
 
-    <nav class="mt-4">
+    <nav class="mt-3">
       <ul class="flex flex-wrap justify-start">
         <script webc:type="js" webc:root>
           `${$data.nav.bottom
@@ -44,9 +47,10 @@ layout: root.webc
   </footer>
 </div>
 
-<hr class="mt-6"/>
+<hr class="mt-8" />
 
-<h2 class="mt-8 mb-2 text-xl font-bold">Pages&nbsp;
+<h2 class="mt-8 mb-2 text-xl font-bold">
+  Pages&nbsp;
   <script webc:type="js" webc:root>
     `<span>(${collections.pages.length})</span>`;
   </script>
@@ -57,7 +61,8 @@ layout: root.webc
   </script>
 </ul>
 
-<h2 class="mt-8 mb-2 text-xl font-bold">Posts&nbsp;
+<h2 class="mt-8 mb-2 text-xl font-bold">
+  Posts&nbsp;
   <script webc:type="js" webc:root>
     `<span>(${collections.posts.length})</span>`;
   </script>
@@ -68,29 +73,32 @@ layout: root.webc
   </script>
 </ol>
 
-<h2 class="mt-8 mb-2 text-xl font-bold">Notes&nbsp;
+<h2 class="mt-8 mb-2 text-xl font-bold">
+  Notes&nbsp;
   <script webc:type="js" webc:root>
     `<span>(${collections.notes.length})</span>`;
   </script>
- </h2>
+</h2>
 <ul>
   <script webc:type="js" webc:root>
     `${collections.notes.map(note => `<li><a href="${note.url}"><code>${note.url}</code></a></li>`).join('')}`;
   </script>
 </ul>
 
-<h2 class="mt-8 mb-2 text-xl font-bold">Timeline&nbsp;
-<script webc:type="js" webc:root>
+<h2 class="mt-8 mb-2 text-xl font-bold">
+  Timeline&nbsp;
+  <script webc:type="js" webc:root>
     `<span>(${collections.timeline.length})</span>`;
   </script>
- </h2>
+</h2>
 <ol reversed>
   <script webc:type="js" webc:root>
     `${collections.timeline.map(year => `<li><code>${year.data.year}</code></li>`).join('')}`;
   </script>
 </ol>
 
-<h2 class="mt-8 mb-2 text-xl font-bold">All Pages&nbsp;
+<h2 class="mt-8 mb-2 text-xl font-bold">
+  All Pages&nbsp;
   <script webc:type="js" webc:root>
     `<span>(${collections.all.length})</span>`;
   </script>
