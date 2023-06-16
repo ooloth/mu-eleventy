@@ -32,7 +32,7 @@ layout: root.webc
       </script>
     </p>
 
-    <nav>
+    <nav class="mt-4">
       <ul class="flex flex-wrap justify-start">
         <script webc:type="js" webc:root>
           `${$data.nav.bottom
