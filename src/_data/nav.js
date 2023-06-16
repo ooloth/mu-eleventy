@@ -1,6 +1,6 @@
 module.exports = {
   top: [
-    { title: 'blog', url: '/blog/' },
+    { title: 'writing', url: '/' },
     { title: 'notes', url: '/notes/' },
     { title: 'about', url: '/about/' },
     { title: 'likes', url: '/likes/' },
