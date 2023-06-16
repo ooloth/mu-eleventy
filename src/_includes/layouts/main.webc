@@ -46,28 +46,44 @@ layout: root.webc
 
 <hr class="mt-6"/>
 
-<h2 class="mt-8 mb-2 text-xl font-bold">Pages</h2>
+<h2 class="mt-8 mb-2 text-xl font-bold">Pages&nbsp;
+  <script webc:type="js" webc:root>
+    `<span>(${collections.pages.length})</span>`;
+  </script>
+</h2>
 <ul>
   <script webc:type="js" webc:root>
     `${collections.pages.map(page => `<li><a href="${page.url}"><code>${page.url}</code></a></li>`).join('')}`;
   </script>
 </ul>
 
-<h2 class="mt-8 mb-2 text-xl font-bold">Posts</h2>
+<h2 class="mt-8 mb-2 text-xl font-bold">Posts&nbsp;
+  <script webc:type="js" webc:root>
+    `<span>(${collections.posts.length})</span>`;
+  </script>
+</h2>
 <ol reversed>
   <script webc:type="js" webc:root>
     `${collections.posts.map(post => `<li><a href="${post.url}"><code>${post.url}</code></a></li>`).join('')}`;
   </script>
 </ol>
 
-<h2 class="mt-8 mb-2 text-xl font-bold">Notes</h2>
+<h2 class="mt-8 mb-2 text-xl font-bold">Notes&nbsp;
+  <script webc:type="js" webc:root>
+    `<span>(${collections.notes.length})</span>`;
+  </script>
+ </h2>
 <ul>
   <script webc:type="js" webc:root>
     `${collections.notes.map(note => `<li><a href="${note.url}"><code>${note.url}</code></a></li>`).join('')}`;
   </script>
 </ul>
 
-<h2 class="mt-8 mb-2 text-xl font-bold">Timeline</h2>
+<h2 class="mt-8 mb-2 text-xl font-bold">Timeline&nbsp;
+<script webc:type="js" webc:root>
+    `<span>(${collections.timeline.length})</span>`;
+  </script>
+ </h2>
 <ol reversed>
   <script webc:type="js" webc:root>
     `${collections.timeline.map(year => `<li><code>${year.data.year}</code></li>`).join('')}`;
@@ -75,7 +91,7 @@ layout: root.webc
 </ol>
 
 <h2 class="mt-8 mb-2 text-xl font-bold">All Pages&nbsp;
-<script webc:type="js" webc:root>
+  <script webc:type="js" webc:root>
     `<span>(${collections.all.length})</span>`;
   </script>
 </h2>
