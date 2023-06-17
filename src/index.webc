@@ -17,11 +17,7 @@ description: todo
               <time datetime="${htmlDateString(
                 post.date,
               )}" class="text-[0.85rem] md:text-[0.92rem] uppercase md:min-w-[8rem]">${readableDate(post.date)}</time>
-              <a href="${
-                post.url
-              }" class="text-[1.1rem] leading-relaxed text-neutral-50 underline underline-offset-4 decoration-[3px] decoration-rose-400 hover:decoration-neutral-100">${
-              post.data.title || post.fileSlug
-            }</a>
+              <a href="${post.url}" class="link text-[1.1rem] leading-relaxed ">${post.data.title || post.fileSlug}</a>
             </li>`,
         )
         .join('')}`;

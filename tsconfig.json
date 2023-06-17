@@ -17,5 +17,5 @@
     "incremental": true
   },
   "exclude": ["node_modules"],
-  "include": ["src/**/*.js", "src/**/*.ts", "src/**/*.tsx"]
+  "include": ["src/**/*.js", "src/**/*.ts", "src/**/*.tsx", "tailwind.config.js"]
 }

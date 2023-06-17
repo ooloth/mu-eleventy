@@ -4,6 +4,7 @@ const yaml = require('js-yaml');
 
 const { EleventyHtmlBasePlugin } = require('@11ty/eleventy');
 const pluginBundle = require('@11ty/eleventy-plugin-bundle');
+const pluginPostCSS = require('eleventy-plugin-postcss');
 const pluginRss = require('@11ty/eleventy-plugin-rss');
 const pluginSyntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 const pluginWebC = require('@11ty/eleventy-plugin-webc');
@@ -66,6 +67,9 @@ module.exports = function (eleventyConfig) {
     transformData: {}, // additional global data used in the Eleventy WebC transform
     useTransform: false, // adds an Eleventy WebC transform to process all HTML output
   });
+
+  // Community plugins
+  eleventyConfig.addPlugin(pluginPostCSS);
 
   // Local plugins
   // eleventyConfig.addPlugin(pluginDrafts);
