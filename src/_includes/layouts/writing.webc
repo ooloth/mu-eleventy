@@ -2,7 +2,8 @@
 layout: main.webc
 ---
 
-<article @raw="content" class="prose"></article>
+<article @raw="content" class="markdown"></article>
+<!-- <article @raw="content" class="prose prose-neutral prose-invert"></article> -->
 
 <!--
 {# Only include the syntax highlighter CSS on blog posts #} {%- css %}{% include
