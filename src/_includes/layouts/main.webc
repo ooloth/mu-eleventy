@@ -5,7 +5,7 @@ layout: root.webc
 <div class="flex flex-col">
   <!-- <div class="flex flex-col items-center max-w-screen-lg mx-auto"> -->
   <!--- Main header --->
-  <header class="mb-12">
+  <header class="mb-14">
     <!-- <a href="#skip" class="visually-hidden">Skip to main content</a> -->
     <nav>
       <h2 class="sr-only">Top level navigation menu</h2>
@@ -27,7 +27,7 @@ layout: root.webc
 
   <!--- Main footer --->
   <footer
-    class="flex flex-col items-center md:flex-row md:items-baseline md:justify-between mt-24 text-center text-lg text-slate-50"
+    class="flex flex-col items-center sm:flex-row sm:items-baseline sm:justify-between mt-14 text-[1rem] text-slate-50"
   >
     <p>
       <script webc:type="js">
@@ -39,7 +39,7 @@ layout: root.webc
       <ul class="flex flex-wrap justify-start">
         <script webc:type="js" webc:root>
           `${$data.nav.bottom
-            .map(item => `<li class="mx-3 md:ms-3"><a href="${item.url}" target="_blank">${item.title}</a></li>`)
+            .map(item => `<li class="mx-3 sm:ms-3"><a href="${item.url}" target="_blank">${item.title}</a></li>`)
             .join('')}`;
         </script>
       </ul>
@@ -47,7 +47,7 @@ layout: root.webc
   </footer>
 </div>
 
-<hr class="mt-8" />
+<hr class="mt-7" />
 
 <h2 class="mt-8 mb-2 text-xl font-bold">
   Pages&nbsp;
