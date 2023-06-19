@@ -12,6 +12,7 @@ const pluginWebC = require('@11ty/eleventy-plugin-webc');
 const { sortByParent } = require('./src/config/collections.js');
 
 const pluginDrafts = require('./src/config/plugin.drafts.js');
+const pluginPrivate = require('./src/config/plugin.private.js');
 // const pluginImages = require('./src/config/plugin.images.js');
 
 module.exports = function (config) {
@@ -47,6 +48,7 @@ module.exports = function (config) {
 
   // Local plugins
   config.addPlugin(pluginDrafts);
+  config.addPlugin(pluginPrivate);
   // eleventyConfig.addPlugin(pluginImages);
 
   // Collections
