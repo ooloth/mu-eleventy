@@ -11,17 +11,17 @@ module.exports = config => {
   config.addGlobalData('eleventyComputed.permalink', getPermalink);
   config.addGlobalData('eleventyComputed.eleventyExcludeFromCollections', getExcludeFromCollections);
 
-  let logged = false;
+  let loggedDrafts = false;
 
   config.on('eleventy.before', ({ runMode }) => {
-    const isLocalBuild = runMode === 'watch' || runMode === 'serve';
+    const isLocalBuild = runMode === 'serve' || runMode === 'watch';
 
     process.env.BUILD_DRAFTS = isLocalBuild ? true : false;
 
     // Only log once
-    if (!logged) {
-      console.log(`[ooloth/michaeluloth.com] ${isLocalBuild ? 'Including' : 'Excluding'} drafts.`);
-      logged = true;
+    if (!loggedDrafts) {
+      console.log(`[ooloth/michaeluloth.com] ${isLocalBuild ? 'Including' : 'Excluding'} drafts...`);
+      loggedDrafts = true;
     }
   });
 };
