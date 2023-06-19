@@ -4,8 +4,6 @@ const getPermalink = () => data =>
   // Always skip during non-watch/serve builds
   !process.env.BUILD_PRIVATE ? false : data.permalink;
 
-// When using `addGlobalData` and you *want* to return a function, you must nest functions like this.
-// `addGlobalData` acts like a global data file and runs the top level function it receives.
 const getExcludeFromCollections = () => data =>
   // Always exclude from non-watch/serve builds
   !process.env.BUILD_PRIVATE ? true : data.eleventyExcludeFromCollections;
