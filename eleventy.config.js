@@ -11,8 +11,8 @@ const pluginWebC = require('@11ty/eleventy-plugin-webc');
 
 const { sortByParent } = require('./src/config/collections.js');
 
-// const pluginDrafts = require('./eleventy.config.drafts.js');
-// const pluginImages = require('./eleventy.config.images.js');
+const pluginDrafts = require('./src/config/plugin.drafts.js');
+// const pluginImages = require('./src/config/plugin.images.js');
 
 module.exports = function (config) {
   // Copy the contents of the `public` folder to the output folder
@@ -46,7 +46,7 @@ module.exports = function (config) {
   config.addPlugin(pluginPostCSS);
 
   // Local plugins
-  // eleventyConfig.addPlugin(pluginDrafts);
+  config.addPlugin(pluginDrafts);
   // eleventyConfig.addPlugin(pluginImages);
 
   // Collections
