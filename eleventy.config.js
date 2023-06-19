@@ -9,41 +9,15 @@ const pluginRss = require('@11ty/eleventy-plugin-rss');
 const pluginSyntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 const pluginWebC = require('@11ty/eleventy-plugin-webc');
 
+const { sortByParent } = require('./src/config/collections.js');
+
 // const pluginDrafts = require('./eleventy.config.drafts.js');
 // const pluginImages = require('./eleventy.config.images.js');
 
-function nestChildObjectsUnderParents(object) {
-  const tree = {};
-  const roots = [];
-
-  // Initialize every item and index by its title
-  object.forEach(item => {
-    item.children = []; // Add an empty array for the children if it does not already exist
-    tree[item.fileSlug] = item; // Index each item by its file slug
-  });
-
-  // Connect children with their parents and separate the roots
-  object.forEach(item => {
-    // If there is a parent, push the current item into its parent's children array
-    if (item.data.parent) {
-      if (!tree[item.data.parent]) {
-        // TODO: throw an error to avoid hiding the page link indefinitely?
-        console.log(`tree does not contain ${item.data.parent}`);
-      }
-
-      tree[item.data.parent].children.push(item);
-    }
-    // If there is no parent, the item is a root and is pushed into the roots array
-    else roots.push(item);
-  });
-
-  return roots;
-}
-
-module.exports = function (eleventyConfig) {
+module.exports = function (config) {
   // Copy the contents of the `public` folder to the output folder
   // For example, `./public/styles/` ends up in `_site/styles/`
-  eleventyConfig.addPassthroughCopy({
+  config.addPassthroughCopy({
     './public/': '/',
     './node_modules/prismjs/themes/prism-okaidia.css': '/styles/prism-okaidia.css',
   });
@@ -55,13 +29,13 @@ module.exports = function (eleventyConfig) {
   // eleventyConfig.addWatchTarget('content/**/*.{svg,webp,png,jpeg}');
 
   // Official plugins
-  eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
-  eleventyConfig.addPlugin(pluginBundle);
-  eleventyConfig.addPlugin(pluginRss);
-  eleventyConfig.addPlugin(pluginSyntaxHighlight, {
+  config.addPlugin(EleventyHtmlBasePlugin);
+  config.addPlugin(pluginBundle);
+  config.addPlugin(pluginRss);
+  config.addPlugin(pluginSyntaxHighlight, {
     preAttributes: { tabindex: 0 },
   });
-  eleventyConfig.addPlugin(pluginWebC, {
+  config.addPlugin(pluginWebC, {
     bundlePluginOptions: {}, // options passed to @11ty/eleventy-plugin-bundle
     components: 'src/_includes/components/**/*.webc', // glob to find no-import global components
     transformData: {}, // additional global data used in the Eleventy WebC transform
@@ -69,7 +43,7 @@ module.exports = function (eleventyConfig) {
   });
 
   // Community plugins
-  eleventyConfig.addPlugin(pluginPostCSS);
+  config.addPlugin(pluginPostCSS);
 
   // Local plugins
   // eleventyConfig.addPlugin(pluginDrafts);
@@ -80,7 +54,7 @@ module.exports = function (eleventyConfig) {
   // Posts in reverse chronological order
   // TODO: in production, filter out posts without a past date
   // See: https://www.11ty.dev/docs/collections/#getfilteredbyglob(-glob-)
-  eleventyConfig.addCollection('posts', collectionApi =>
+  config.addCollection('posts', collectionApi =>
     collectionApi
       .getFilteredByGlob('src/content/writing/**/*.md')
       .reverse()
@@ -90,18 +64,18 @@ module.exports = function (eleventyConfig) {
   // Notes in alphabetical order
   // TODO: in production, filter out private notes
   // See: https://www.11ty.dev/docs/collections/#getfilteredbyglob(-glob-)
-  eleventyConfig.addCollection('notes', collectionApi => {
+  config.addCollection('notes', collectionApi => {
     const notes = collectionApi
       .getFilteredByGlob('src/content/writing/**/*.md')
       .filter(item => item.data.destination !== 'blog')
       .sort((a, b) => a.inputPath.localeCompare(b.inputPath));
 
-    return nestChildObjectsUnderParents(notes);
+    return sortByParent(notes);
   });
 
   // Timeline in descending order
   // See: https://www.11ty.dev/docs/collections/#getfilteredbyglob(-glob-)
-  eleventyConfig.addCollection('timeline', collectionApi =>
+  config.addCollection('timeline', collectionApi =>
     collectionApi
       .getFilteredByGlob('src/content/timeline/**/*.md')
       .sort((a, b) => b.inputPath.localeCompare(a.inputPath)),
@@ -109,12 +83,12 @@ module.exports = function (eleventyConfig) {
 
   // Pages
   // See: https://www.11ty.dev/docs/collections/#getfilteredbyglob(-glob-)
-  eleventyConfig.addCollection('pages', collectionApi =>
+  config.addCollection('pages', collectionApi =>
     collectionApi.getFilteredByGlob(['src/content/pages/**/*.md', 'src/pages/**/*.webc']),
   );
 
   // Data extensions
-  eleventyConfig.addDataExtension('yaml', contents => yaml.load(contents));
+  config.addDataExtension('yaml', contents => yaml.load(contents));
 
   // Extensions
 
@@ -125,28 +99,28 @@ module.exports = function (eleventyConfig) {
   // });
 
   // Filters
-  eleventyConfig.addFilter('readableDate', (dateObj, format, zone) => {
+  config.addFilter('readableDate', (dateObj, format, zone) => {
     // Formatting tokens for Luxon: https://moment.github.io/luxon/#/formatting?id=table-of-tokens
     return DateTime.fromJSDate(dateObj, { zone: zone || 'America/Toronto' }).toFormat(format || 'DD');
   });
 
-  eleventyConfig.addFilter('htmlDateString', dateObj => {
+  config.addFilter('htmlDateString', dateObj => {
     // dateObj input: https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
     return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat('yyyy-LL-dd');
   });
 
   // Get the first `n` elements of a collection.
-  eleventyConfig.addFilter('head', (array, n) => {
+  config.addFilter('head', (array, n) => {
     if (!Array.isArray(array) || array.length === 0) return [];
     if (n < 0) return array.slice(n);
     return array.slice(0, n);
   });
 
   // Return the smallest number argument
-  eleventyConfig.addFilter('min', (...numbers) => Math.min.apply(null, numbers));
+  config.addFilter('min', (...numbers) => Math.min.apply(null, numbers));
 
   // Return all the tags used in a collection
-  eleventyConfig.addFilter('getAllTags', collection => {
+  config.addFilter('getAllTags', collection => {
     let tagSet = new Set();
     for (let item of collection) {
       (item.data.tags || []).forEach(tag => tagSet.add(tag));
@@ -154,12 +128,12 @@ module.exports = function (eleventyConfig) {
     return Array.from(tagSet);
   });
 
-  eleventyConfig.addFilter('filterTagList', tags =>
+  config.addFilter('filterTagList', tags =>
     (tags || []).filter(tag => ['all', 'nav', 'post', 'posts'].indexOf(tag) === -1),
   );
 
   // Customize Markdown library settings:
-  eleventyConfig.amendLibrary('md', mdLib => {
+  config.amendLibrary('md', mdLib => {
     mdLib.use(markdownItAnchor, {
       permalink: markdownItAnchor.permalink.ariaHidden({
         placement: 'after',
@@ -168,7 +142,7 @@ module.exports = function (eleventyConfig) {
         ariaHidden: false,
       }),
       level: [1, 2, 3, 4],
-      slugify: eleventyConfig.getFilter('slugify'),
+      slugify: config.getFilter('slugify'),
     });
   });
 
