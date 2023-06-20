@@ -10,15 +10,19 @@ on:
     paths:
       - 'public/**'
       - 'src/**'
-      - eleventy.config.drafts.js
-      - eleventy.config.images.js
-      - eleventy.config.js
+      - .eleventy.js
+      - .eleventyignore
+      - .gitignore
       - netlify.toml
+      - postcss.config.js
+      - tailwind.config.js
 
 jobs:
   rebuild:
     runs-on: ubuntu-latest
     name: Rebuild site
+    env:
+      NODE_ENV: production
     steps:
       - uses: actions/checkout@v3
         with:
