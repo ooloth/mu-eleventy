@@ -5,7 +5,7 @@
  * @returns {array<T>}
  */
 const removeDrafts = collection =>
-  process.env.NODE_ENV === 'production' ? collection.filter(item => item.data.published) : collection;
+  process.env.ELEVENTY_PRODUCTION ? collection.filter(item => item.data.published) : collection;
 
 /**
  * @function
@@ -14,7 +14,7 @@ const removeDrafts = collection =>
  * @returns {array<T>}
  */
 const removeScheduled = collection =>
-  process.env.NODE_ENV === 'production' ? collection.filter(item => item.date <= Date.now()) : collection;
+  process.env.ELEVENTY_PRODUCTION ? collection.filter(item => item.date <= Date.now()) : collection;
 
 /**
  * @function
@@ -23,7 +23,7 @@ const removeScheduled = collection =>
  * @returns {array<T>}
  */
 const removePrivate = collection =>
-  process.env.NODE_ENV === 'production' ? collection.filter(item => !item.data.private) : collection;
+  process.env.ELEVENTY_PRODUCTION ? collection.filter(item => !item.data.private) : collection;
 
 const sortByParent = collection => {
   const tree = {};
