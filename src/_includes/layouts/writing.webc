@@ -2,8 +2,16 @@
 layout: main.webc
 ---
 
-<article @raw="content" class="markdown"></article>
-<!-- <article @raw="content" class="prose prose-neutral prose-invert"></article> -->
+<div class="mx-auto max-w-[75ch]">
+  <!-- <div class="columns-lg gap-x-24"> -->
+  <header>
+    <h1>{title || page.fileSlug}</h1>
+  </header>
+
+  <article @raw="content" class="markdown"></article>
+
+  <footer></footer>
+</div>
 
 <!--
 {# Only include the syntax highlighter CSS on blog posts #} {%- css %}{% include

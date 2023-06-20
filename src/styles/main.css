@@ -13,15 +13,39 @@
 
 @layer components {
   .link {
-    @apply text-neutral-50 underline underline-offset-4 decoration-[3px] decoration-rose-400 hover:decoration-neutral-100;
+    @apply text-neutral-50 underline underline-offset-4 decoration-[4px] decoration-rose-400 hover:decoration-neutral-100;
   }
 
   .markdown {
-    & p {
-      @apply my-4;
+    & h1 {
+      @apply my-8 text-4xl font-bold;
     }
+    & h2 {
+      @apply mt-10 text-2xl font-semibold break-inside-avoid-column;
+    }
+    & h3 {
+      @apply mt-4 text-xl font-semibold;
+    }
+    & h4 {
+      @apply my-4 text-xl font-semibold;
+    }
+    & h5 {
+      @apply my-4 text-lg font-semibold;
+    }
+    & h6 {
+      @apply my-4 text-base font-bold;
+    }
+
+    & p {
+      @apply my-5 text-lg;
+    }
+
     & a {
       @apply link;
+    }
+
+    & ul {
+      @apply my-6 list-disc list-inside leading-relaxed;
     }
   }
 }

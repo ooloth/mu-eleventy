@@ -18,5 +18,8 @@
     <link rel="alternate" href="/feed.json" type="application/json" title="${site.title}" />
   </head>
 
-  <body @raw="content" class="bg-neutral-900 py-7 px-4 sm:px-6 min-h-screen leading-relaxed text-neutral-300"></body>
+  <body
+    @raw="content"
+    class="flex flex-col overflow-x-hidden bg-neutral-900 py-7 px-4 sm:px-6 min-h-screen leading-relaxed text-neutral-300 md:text-lg"
+  ></body>
 </html>

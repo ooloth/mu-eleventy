@@ -2,7 +2,7 @@
 layout: root.webc
 ---
 
-<div class="flex flex-col">
+<div class="flex flex-col flex-1">
   <!-- <div class="flex flex-col items-center max-w-screen-lg mx-auto"> -->
   <!--- Main header --->
   <header class="mb-14">
