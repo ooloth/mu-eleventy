@@ -1,3 +1,30 @@
+/**
+ * @function
+ * @template T
+ * @param {array<T>} collection
+ * @returns {array<T>}
+ */
+const removeDrafts = collection =>
+  process.env.NODE_ENV === 'production' ? collection.filter(item => item.data.published) : collection;
+
+/**
+ * @function
+ * @template T
+ * @param {array<T>} collection
+ * @returns {array<T>}
+ */
+const removeScheduled = collection =>
+  process.env.NODE_ENV === 'production' ? collection.filter(item => item.date <= Date.now()) : collection;
+
+/**
+ * @function
+ * @template T
+ * @param {array<T>} collection
+ * @returns {array<T>}
+ */
+const removePrivate = collection =>
+  process.env.NODE_ENV === 'production' ? collection.filter(item => !item.data.private) : collection;
+
 const sortByParent = collection => {
   const tree = {};
   const roots = [];
@@ -26,4 +53,4 @@ const sortByParent = collection => {
   return roots;
 };
 
-module.exports = { sortByParent };
+module.exports = { removeDrafts, removePrivate, removeScheduled, sortByParent };

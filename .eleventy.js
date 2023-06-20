@@ -9,10 +9,8 @@ const pluginRss = require('@11ty/eleventy-plugin-rss');
 const pluginSyntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 const pluginWebC = require('@11ty/eleventy-plugin-webc');
 
-const { sortByParent } = require('./src/config/collections.js');
+const { removeDrafts, removePrivate, removeScheduled, sortByParent } = require('./src/config/collections.js');
 
-const pluginDrafts = require('./src/config/plugin.drafts.js');
-const pluginPrivate = require('./src/config/plugin.private.js');
 // const pluginImages = require('./src/config/plugin.images.js');
 
 module.exports = function (config) {
@@ -47,8 +45,6 @@ module.exports = function (config) {
   config.addPlugin(pluginPostCSS);
 
   // Local plugins
-  config.addPlugin(pluginDrafts);
-  config.addPlugin(pluginPrivate);
   // eleventyConfig.addPlugin(pluginImages);
 
   // Collections
@@ -56,12 +52,14 @@ module.exports = function (config) {
   // Posts in reverse chronological order
   // TODO: in production, filter out posts without a past date
   // See: https://www.11ty.dev/docs/collections/#getfilteredbyglob(-glob-)
-  config.addCollection('posts', collectionApi =>
-    collectionApi
+  config.addCollection('posts', collectionApi => {
+    const posts = collectionApi
       .getFilteredByGlob('src/content/writing/**/*.md')
       .reverse()
-      .filter(item => item.data.destination === 'blog'),
-  );
+      .filter(item => item.data.destination === 'blog');
+
+    return removeScheduled(removeDrafts(posts));
+  });
 
   // Notes in alphabetical order
   // TODO: in production, filter out private notes
@@ -72,7 +70,7 @@ module.exports = function (config) {
       .filter(item => item.data.destination !== 'blog')
       .sort((a, b) => a.inputPath.localeCompare(b.inputPath));
 
-    return sortByParent(notes);
+    return sortByParent(removePrivate(notes));
   });
 
   // Timeline in descending order
