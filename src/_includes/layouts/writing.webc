@@ -2,7 +2,7 @@
 layout: main.webc
 ---
 
-<div class="mx-auto max-w-[75ch]">
+<div class="mx-auto max-w-prose">
   <!-- <div class="columns-lg gap-x-24"> -->
   <header>
     <h1>{title || page.fileSlug}</h1>

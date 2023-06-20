@@ -12,32 +12,36 @@
 /* @import "./custom-utilities.css"; */
 
 @layer components {
+  .heading {
+    @apply break-after-avoid font-semibold;
+  }
+
   .link {
     @apply text-neutral-50 underline underline-offset-4 decoration-[4px] decoration-rose-400 hover:decoration-neutral-100;
   }
 
   .markdown {
     & h1 {
-      @apply my-8 text-4xl font-bold;
+      @apply heading my-8 text-3xl font-bold;
     }
     & h2 {
-      @apply mt-10 text-2xl font-semibold break-inside-avoid-column;
+      @apply heading mt-10 text-2xl;
     }
     & h3 {
-      @apply mt-4 text-xl font-semibold;
+      @apply heading mt-4 text-xl;
     }
     & h4 {
-      @apply my-4 text-xl font-semibold;
+      @apply heading mt-4 text-lg;
     }
     & h5 {
-      @apply my-4 text-lg font-semibold;
+      @apply heading mt-4 text-base;
     }
     & h6 {
-      @apply my-4 text-base font-bold;
+      @apply heading mt-4 text-sm;
     }
 
     & p {
-      @apply my-5 text-lg;
+      @apply mt-5;
     }
 
     & a {
@@ -45,7 +49,15 @@
     }
 
     & ul {
-      @apply my-6 list-disc list-inside leading-relaxed;
+      @apply mt-5 list-disc list-inside;
+
+      & > li {
+        @apply mt-1 ps-3 -indent-[.85rem] whitespace-pre-wrap marker:content-['︎⦁_'];
+      }
+    }
+
+    & p + ul {
+      @apply mt-3;
     }
   }
 }
