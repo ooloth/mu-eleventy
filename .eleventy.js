@@ -75,11 +75,11 @@ module.exports = function (config) {
 
   // Timeline in descending order
   // See: https://www.11ty.dev/docs/collections/#getfilteredbyglob(-glob-)
-  config.addCollection('timeline', collectionApi =>
-    collectionApi
-      .getFilteredByGlob('src/content/timeline/**/*.md')
-      .sort((a, b) => b.inputPath.localeCompare(a.inputPath)),
-  );
+  // config.addCollection('timeline', collectionApi =>
+  //   collectionApi
+  //     .getFilteredByGlob('src/content/timeline/**/*.md')
+  //     .sort((a, b) => b.inputPath.localeCompare(a.inputPath)),
+  // );
 
   // Pages
   // See: https://www.11ty.dev/docs/collections/#getfilteredbyglob(-glob-)
@@ -110,11 +110,11 @@ module.exports = function (config) {
   });
 
   // Get the first `n` elements of a collection.
-  config.addFilter('head', (array, n) => {
-    if (!Array.isArray(array) || array.length === 0) return [];
-    if (n < 0) return array.slice(n);
-    return array.slice(0, n);
-  });
+  // config.addFilter('head', (array, n) => {
+  //   if (!Array.isArray(array) || array.length === 0) return [];
+  //   if (n < 0) return array.slice(n);
+  //   return array.slice(0, n);
+  // });
 
   // Return the smallest number argument
   config.addFilter('min', (...numbers) => Math.min.apply(null, numbers));
@@ -128,31 +128,23 @@ module.exports = function (config) {
     return Array.from(tagSet);
   });
 
-  config.addFilter('filterTagList', tags =>
-    (tags || []).filter(tag => ['all', 'nav', 'post', 'posts'].indexOf(tag) === -1),
-  );
+  // config.addFilter('filterTagList', tags =>
+  //   (tags || []).filter(tag => ['all', 'nav', 'post', 'posts'].indexOf(tag) === -1),
+  // );
 
   // Customize Markdown library settings:
-  config.amendLibrary('md', mdLib => {
-    mdLib.use(markdownItAnchor, {
-      permalink: markdownItAnchor.permalink.ariaHidden({
-        placement: 'after',
-        class: 'header-anchor',
-        symbol: '#',
-        ariaHidden: false,
-      }),
-      level: [1, 2, 3, 4],
-      slugify: config.getFilter('slugify'),
-    });
-  });
-
-  // Features to make your build faster (when you need them)
-
-  // If your passthrough copy gets heavy and cumbersome, add this line
-  // to emulate the file copy on the dev server. Learn more:
-  // https://www.11ty.dev/docs/copy/#emulate-passthrough-copy-during-serve
-
-  // eleventyConfig.setServerPassthroughCopyBehavior("passthrough");
+  // config.amendLibrary('md', mdLib => {
+  //   mdLib.use(markdownItAnchor, {
+  //     permalink: markdownItAnchor.permalink.ariaHidden({
+  //       placement: 'after',
+  //       class: 'header-anchor',
+  //       symbol: '#',
+  //       ariaHidden: false,
+  //     }),
+  //     level: [1, 2, 3, 4],
+  //     slugify: config.getFilter('slugify'),
+  //   });
+  // });
 
   return {
     // Control which files Eleventy will process
@@ -165,7 +157,6 @@ module.exports = function (config) {
     // Pre-process *.html files with: (default: `liquid`)
     htmlTemplateEngine: 'njk',
 
-    // These are all optional:
     dir: {
       input: 'src', // default: "."
       includes: '_includes', // relative to input dir
@@ -173,17 +164,5 @@ module.exports = function (config) {
       layouts: '_includes/layouts', // relative to input dir
       output: '_site', // relative to root
     },
-
-    // -----------------------------------------------------------------
-    // Optional items:
-    // -----------------------------------------------------------------
-
-    // If your site deploys to a subdirectory, change `pathPrefix`.
-    // Read more: https://www.11ty.dev/docs/config/#deploy-to-a-subdirectory-with-a-path-prefix
-
-    // When paired with the HTML <base> plugin https://www.11ty.dev/docs/plugins/html-base/
-    // it will transform any absolute URLs in your HTML to include this
-    // folder name and does **not** affect where things go in the output folder.
-    pathPrefix: '/',
   };
 };
