@@ -3,6 +3,9 @@
 
 name: Rebuild Netlify site
 
+env:
+  NODE_ENV: production
+
 on:
   push:
     branches:
@@ -22,8 +25,6 @@ jobs:
   rebuild:
     runs-on: ubuntu-latest
     name: Rebuild site
-    env:
-      NODE_ENV: production
     steps:
       - uses: actions/checkout@v3
         with:
