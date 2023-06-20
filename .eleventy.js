@@ -99,15 +99,22 @@ module.exports = function (config) {
   // });
 
   // Filters
-  config.addFilter('readableDate', (dateObj, format, zone) => {
+  config.addFilter('readableDate', (date, format, zone) => {
+    const dateObj = typeof date === 'string' ? new Date(date) : date;
+
     // Formatting tokens for Luxon: https://moment.github.io/luxon/#/formatting?id=table-of-tokens
     return DateTime.fromJSDate(dateObj, { zone: zone || 'America/Toronto' }).toFormat(format || 'DD');
   });
 
-  config.addFilter('htmlDateString', dateObj => {
+  config.addFilter('htmlDateString', date => {
+    const dateObj = typeof date === 'string' ? new Date(date) : date;
+
     // dateObj input: https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
     return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat('yyyy-LL-dd');
   });
+
+  // Return true if item is in collection
+  config.addFilter('isPageInCollection', (page, collection) => collection.some(item => item.url === page.url));
 
   // Get the first `n` elements of a collection.
   // config.addFilter('head', (array, n) => {

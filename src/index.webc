@@ -14,10 +14,10 @@ description: todo
         .map(
           post =>
             `<li class="flex flex-col mb-7 md:flex-row md:items-baseline md:mb-4">
-              <time datetime="${htmlDateString(
-                post.date,
-              )}" class="text-[0.8rem] md:text-[0.9rem] uppercase md:min-w-[8rem]">${readableDate(post.date)}</time>
-              <a href="${post.url}" class="link text-lg leading-relaxed ">${post.data.title || post.fileSlug}</a>
+              <time datetime="${htmlDateString(post.date)}" class="timestamp md:min-w-[7rem]">${readableDate(
+              post.date,
+            )}</time>
+              <a href="${post.url}" class="link text-lg">${post.data.title || post.fileSlug}</a>
             </li>`,
         )
         .join('')}`;

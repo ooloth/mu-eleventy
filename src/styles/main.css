@@ -1,7 +1,3 @@
-/* @tailwind base; */
-/* @tailwind components; */
-/* @tailwind utilities; */
-
 @import 'tailwindcss/base';
 /* @import "./custom-base-styles.css"; */
 
@@ -13,35 +9,79 @@
 
 @layer components {
   .heading {
-    @apply break-after-avoid font-semibold;
+    @apply break-after-avoid font-semibold text-black;
+    /* @apply break-after-avoid font-extrabold tracking-[0.02rem] text-neutral-50; */
   }
 
   .link {
-    @apply text-neutral-50 underline underline-offset-4 decoration-[4px] decoration-rose-400 hover:decoration-neutral-100;
+    /* @apply underline underline-offset-[3px] decoration-[2px] decoration-neutral-900 hover:decoration-rose-500; */
+    @apply flex-none underline underline-offset-[3px] decoration-[2px] decoration-neutral-900 hover:decoration-rose-500 hover:bg-rose-500 hover:text-neutral-50;
+    text-decoration-skip-ink: none;
+    /* @apply text-neutral-50 underline underline-offset-4 decoration-[3px] decoration-rose-400 hover:decoration-neutral-50; */
+
+    /* background: linear-gradient(to right, rgba(100, 200, 200, 1), rgba(100, 200, 200, 1)),
+      linear-gradient(to right, rgba(255, 0, 0, 1), rgba(255, 0, 180, 1), rgba(0, 100, 200, 1));
+    background-size: 100% 3px, 0 3px;
+    background-position: 120% 100%, 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 400ms;
+
+    &:hover {
+      background-size: 0 3px, 100% 3px;
+    } */
+  }
+
+  .link-inverted {
+    @apply link decoration-rose-500 hover:decoration-neutral-950;
+  }
+
+  .link-top-nav {
+    @apply link decoration-transparent;
+  }
+
+  .link-subtle {
+    @apply link underline-offset-2 decoration-auto;
+  }
+
+  .list {
+    @apply mt-4 ps-8;
+  }
+
+  .list-item {
+    @apply mt-1;
+  }
+
+  .timestamp {
+    @apply text-sm uppercase;
   }
 
   .markdown {
     & h1 {
-      @apply heading my-8 text-3xl font-bold;
+      @apply heading mb-8 text-4xl leading-[1.1];
     }
     & h2 {
-      @apply heading mt-10 text-2xl;
+      @apply heading mt-8 text-[1.55rem];
     }
     & h3 {
-      @apply heading mt-4 text-xl;
+      @apply heading mt-4 text-2xl;
     }
     & h4 {
-      @apply heading mt-4 text-lg;
+      @apply heading mt-4 text-xl;
     }
     & h5 {
-      @apply heading mt-4 text-base;
+      @apply heading mt-4 text-lg;
     }
     & h6 {
-      @apply heading mt-4 text-sm;
+      @apply heading mt-4 text-base;
     }
 
     & p {
-      @apply mt-5;
+      @apply mt-4;
+
+      & + ul,
+      & + ol {
+        @apply mt-3;
+      }
     }
 
     & a {
@@ -49,15 +89,20 @@
     }
 
     & ul {
-      @apply mt-5 list-disc list-inside;
-
-      & > li {
-        @apply mt-1 ps-3 -indent-[.85rem] whitespace-pre-wrap marker:content-['︎⦁_'];
-      }
+      @apply list list-disc;
     }
 
-    & p + ul {
-      @apply mt-3;
+    & ol {
+      @apply list list-decimal;
+    }
+
+    & li {
+      @apply mt-1;
+
+      & > ul,
+      & > ol {
+        @apply mt-0;
+      }
     }
   }
 }

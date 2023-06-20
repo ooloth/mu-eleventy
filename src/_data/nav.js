@@ -6,9 +6,9 @@ module.exports = {
     { title: 'likes', url: '/likes/' },
   ],
   bottom: [
-    { title: 'rss', url: '/feed.xml' },
-    { title: 'twitter', url: 'https://twitter.com/ooloth' },
-    { title: 'youtube', url: 'https://www.youtube.com/user/michaeluloth' },
-    { title: 'github', url: 'https://github.com/ooloth' },
+    { title: 'RSS', url: '/feed.xml' },
+    { title: 'YouTube', url: 'https://www.youtube.com/user/michaeluloth' },
+    { title: 'Twitter', url: 'https://twitter.com/ooloth' },
+    { title: 'GitHub', url: 'https://github.com/ooloth' },
   ],
 };

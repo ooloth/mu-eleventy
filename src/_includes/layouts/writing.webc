@@ -3,14 +3,31 @@ layout: main.webc
 ---
 
 <div class="mx-auto max-w-prose">
-  <!-- <div class="columns-lg gap-x-24"> -->
-  <header>
-    <h1>{title || page.fileSlug}</h1>
+  <header class="markdown">
+    <time
+      webc:if="isPageInCollection(page, $data.collections.posts)"
+      :datetime="htmlDateString(page.date)"
+      @text="readableDate(page.date)"
+      class="timestamp"
+    ></time>
+
+    <h1 @text="$data.title || page.fileSlug"></h1>
   </header>
 
   <article @raw="content" class="markdown"></article>
 
-  <footer></footer>
+  <footer class="mt-6 border-t-2">
+    <ul>
+      <script type="webc-js">
+        `${data.tags.map(tag => `<li><a href="/tags/${tag.slug}/">${tag.name}</a></li>`).join('')}`
+      </script>
+    </ul>
+
+    <!-- <p class="text-[0.8rem] md:text-[0.9rem] uppercase md:min-w-[8rem]">
+      Last updated
+      <time :datetime="htmlDateString(page.date)" @text="readableDate(page.date)"></time>
+    </p> -->
+  </footer>
 </div>
 
 <!--

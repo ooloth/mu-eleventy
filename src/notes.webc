@@ -15,17 +15,17 @@ layout: main.webc
       `${collections.notes
         .map(note => {
           const children = note.children.length
-            ? `<ul class="">${note.children
+            ? `<ul>${note.children
                 .map(
                   child =>
-                    `<li class="before:content-['└'] before:pe-[0.3rem]"><a href="${child.url}">${getLinkText(
-                      child,
-                    )}</a></li>`,
+                    `<li class="before:content-['└'] before:pe-[0.3rem]"><a href="${
+                      child.url
+                    }" class="link-subtle">${getLinkText(child)}</a></li>`,
                 )
                 .join('')}</ul>`
             : '';
 
-          return `<li class="pt-0.75 break-inside-avoid-column"><a href="${note.url}">${getLinkText(
+          return `<li class="mt-2 break-inside-avoid-column"><a href="${note.url}" class="link-subtle">${getLinkText(
             note,
           )}${children}</a></li>`;
         })
