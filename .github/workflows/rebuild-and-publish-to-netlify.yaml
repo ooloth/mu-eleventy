@@ -36,7 +36,8 @@ jobs:
           node-version-file: '.nvmrc'
           cache: 'npm'
       # use cached node_modules if found (instead of running npm install)
-      - run: npm ci --prefer-offline
+      # - run: npm ci --prefer-offline
+      - run: npm ci
       - run: npm run build
 
       - name: Publish to Netlify
