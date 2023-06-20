@@ -47,6 +47,7 @@ layout: root.webc
   </footer>
 </div>
 
+<!--
 <hr class="mt-7" />
 
 <h2 class="mt-8 mb-2 text-xl font-bold">
@@ -108,3 +109,5 @@ layout: root.webc
     `${collections.all.map(item => `<li><a href="${item.url}"><code>${item.url}</code></a></li>`).join('')}`;
   </script>
 </ul>
+
+-->
