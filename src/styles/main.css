@@ -14,7 +14,7 @@
   }
 
   .link {
-    @apply underline underline-offset-[0.15rem] decoration-[0.15rem] decoration-rose-300 hover:decoration-neutral-900 dark:hover:decoration-neutral-50 text-neutral-950 dark:text-neutral-50;
+    @apply underline underline-offset-[0.2rem] decoration-[0.15rem] decoration-rose-300 hover:decoration-neutral-900 dark:hover:decoration-neutral-50 text-neutral-950 dark:text-neutral-50;
     text-decoration-skip-ink: none;
   }
 
