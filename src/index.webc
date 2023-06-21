@@ -9,7 +9,7 @@ description: todo
   <h2 class="sr-only">Latest Posts</h2>
 
   <ol reversed class="columns-xl gap-x-24">
-    <script webc:type="js" webc:root>
+    <script webc:type="js">
       `${collections.posts
         .map(
           post =>

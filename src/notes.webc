@@ -9,7 +9,7 @@ layout: main.webc
 
   <ul class="columns-2xs lowercase">
     <!--- see: https://www.11ty.dev/docs/data-eleventy-supplied/#fileslug --->
-    <script webc:type="js" webc:root>
+    <script webc:type="js">
       const getLinkText = item => item.data.title || item.fileSlug;
 
       `${collections.notes
