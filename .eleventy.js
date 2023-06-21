@@ -10,6 +10,7 @@ const pluginSyntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 const pluginWebC = require('@11ty/eleventy-plugin-webc');
 
 const { removeDrafts, removePrivate, removeScheduled, sortByParent } = require('./src/config/collections.js');
+const { image } = require('./src/config/shortcodes.js');
 
 // const pluginImages = require('./src/config/plugin.images.js');
 
@@ -154,6 +155,9 @@ module.exports = function (config) {
   //     slugify: config.getFilter('slugify'),
   //   });
   // });
+
+  // Shortcodes
+  config.addShortcode('image', image);
 
   return {
     // Control which files Eleventy will process
