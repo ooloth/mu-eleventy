@@ -113,8 +113,10 @@ module.exports = function (config) {
     return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat('yyyy-LL-dd');
   });
 
-  // Return true if item is in collection
-  config.addFilter('isPageInCollection', (page, collection) => collection.some(item => item.url === page.url));
+  // Return true if item is in collection (at any ancestry level)
+  config.addFilter('isPageInCollection', (page, collection) =>
+    collection.some(item => item.url === page.url || (item.children || []).some(child => child.url === page.url)),
+  );
 
   // Get the first `n` elements of a collection.
   // config.addFilter('head', (array, n) => {
