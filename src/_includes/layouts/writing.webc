@@ -16,12 +16,21 @@ layout: main.webc
 
   <article @raw="content" class="markdown"></article>
 
-  <footer class="mt-6 border-t-2">
-    <ul>
-      <script type="webc-js">
-        `${data.tags.map(tag => `<li><a href="/tags/${tag.slug}/">${tag.name}</a></li>`).join('')}`
-      </script>
-    </ul>
+  <footer class="mt-12 border-t-2">
+    <p class="mt-4 text-neutral-600 hover:underline hover:pink-300">(tags go here)</p>
+
+    <script webc:type="js">
+      if (!$data.tags) {
+        ('');
+      } else {
+        `<ul class="mt-4 flex flex-wrap">${$data.tags
+          .map(
+            tag =>
+              `<li class="me-3"><a href="/tags/${tag.slug}/" class="text-neutral-600 hover:underline hover:pink-300">#${tag.name}</a></li>`,
+          )
+          .join('')}</ul>`;
+      }
+    </script>
 
     <!-- <p class="text-[0.8rem] md:text-[0.9rem] uppercase md:min-w-[8rem]">
       Last updated
