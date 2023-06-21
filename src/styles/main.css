@@ -9,7 +9,7 @@
 
 @layer components {
   .heading {
-    @apply break-after-avoid leading-[1.1] font-semibold text-neutral-950 dark:text-neutral-50;
+    @apply break-after-avoid leading-tight font-semibold text-neutral-950 dark:text-neutral-50;
   }
 
   .link {
@@ -39,7 +39,7 @@
 
   .markdown {
     & h1 {
-      @apply heading mb-8 text-4xl;
+      @apply heading mb-8 text-4xl leading-[1.1];
     }
     & h2 {
       @apply heading mt-8 text-[1.55rem];
