@@ -14,29 +14,12 @@
   }
 
   .link {
-    @apply underline underline-offset-[3px] decoration-[2px] decoration-neutral-900 hover:decoration-rose-500;
-    /* @apply flex-none underline underline-offset-[2px] decoration-[2px] decoration-neutral-900 hover:decoration-rose-500 hover:bg-rose-500 hover:text-neutral-50; */
+    @apply underline underline-offset-[0.2rem] decoration-[0.2rem] decoration-rose-300 hover:decoration-neutral-900 text-neutral-950;
     text-decoration-skip-ink: none;
-    /* @apply text-neutral-50 underline underline-offset-4 decoration-[3px] decoration-rose-400 hover:decoration-neutral-50; */
-
-    /* background: linear-gradient(to right, rgba(100, 200, 200, 1), rgba(100, 200, 200, 1)),
-      linear-gradient(to right, rgba(255, 0, 0, 1), rgba(255, 0, 180, 1), rgba(0, 100, 200, 1));
-    background-size: 100% 3px, 0 3px;
-    background-position: 120% 100%, 0 100%;
-    background-repeat: no-repeat;
-    transition: background-size 400ms;
-
-    &:hover {
-      background-size: 0 3px, 100% 3px;
-    } */
-  }
-
-  .link-inverted {
-    @apply link decoration-rose-500 hover:decoration-neutral-950;
   }
 
   .link-top-nav {
-    @apply link decoration-transparent decoration-[3px] underline-offset-[3px];
+    @apply link decoration-transparent;
   }
 
   .link-subtle {
@@ -76,7 +59,7 @@
     }
 
     & p {
-      @apply mt-4;
+      @apply mt-4 text-neutral-800;
 
       & + ul,
       & + ol {
@@ -85,7 +68,7 @@
     }
 
     & a {
-      @apply link;
+      @apply link text-neutral-950;
     }
 
     & ul {
