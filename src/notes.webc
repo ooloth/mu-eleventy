@@ -25,7 +25,7 @@ layout: main.webc
                 .join('')}</ul>`
             : '';
 
-          return `<li class="mb-3 break-inside-avoid-column"><a href="${note.url}" class="link">${getLinkText(
+          return `<li class="mb-2 break-inside-avoid-column"><a href="${note.url}" class="link">${getLinkText(
             note,
           )}${children}</a></li>`;
         })
