@@ -17,8 +17,6 @@ layout: main.webc
   <article @raw="content" class="markdown"></article>
 
   <footer class="mt-12 border-t-2">
-    <p class="mt-4 text-neutral-600 hover:underline hover:pink-300">(tags go here)</p>
-
     <script webc:type="js">
       if (!$data.tags) {
         ('');
@@ -26,7 +24,7 @@ layout: main.webc
         `<ul class="mt-4 flex flex-wrap">${$data.tags
           .map(
             tag =>
-              `<li class="me-3"><a href="/tags/${tag.slug}/" class="text-neutral-600 hover:underline hover:pink-300">#${tag.name}</a></li>`,
+              `<li class="me-3"><a href="/tags/${tag}/" class="text-neutral-500 dark:text-neutral-400 hover:underline hover:text-neutral-950 dark:hover:text-rose-300">#${tag}</a></li>`,
           )
           .join('')}</ul>`;
       }

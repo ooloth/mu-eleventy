@@ -9,12 +9,12 @@
 
 @layer components {
   .heading {
-    @apply break-after-avoid font-semibold text-black;
-    /* @apply break-after-avoid font-extrabold tracking-[0.02rem] text-neutral-50; */
+    @apply break-after-avoid font-semibold text-neutral-950 dark:text-neutral-50
+    /* @apply break-after-avoid font-extrabold tracking-[0.02rem] text-neutral-50; */;
   }
 
   .link {
-    @apply underline underline-offset-[0.2rem] decoration-[0.2rem] decoration-rose-300 hover:decoration-neutral-900 text-neutral-950;
+    @apply underline underline-offset-[0.2rem] decoration-[0.2rem] decoration-rose-300 hover:decoration-neutral-900 dark:hover:decoration-neutral-50 text-neutral-950 dark:text-neutral-50;
     text-decoration-skip-ink: none;
   }
 
@@ -59,7 +59,7 @@
     }
 
     & p {
-      @apply mt-4 text-neutral-800;
+      @apply mt-4;
 
       & + ul,
       & + ol {
@@ -68,7 +68,7 @@
     }
 
     & a {
-      @apply link text-neutral-950;
+      @apply link;
     }
 
     & ul {

@@ -20,7 +20,7 @@
 
   <body
     @raw="content"
-    class="flex flex-col overflow-x-hidden bg-neutral-05 py-7 px-4 sm:px-6 min-h-screen text-[1.1rem] leading-relaxed text-neutral-700"
+    class="flex flex-col overflow-x-hidden bg-neutral-05 dark:bg-neutral-900 py-7 px-4 sm:px-6 min-h-screen text-[1.1rem] leading-relaxed text-neutral-800 dark:text-neutral-300"
   ></body>
   <!-- <body
     @raw="content"
