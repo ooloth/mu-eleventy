@@ -27,7 +27,7 @@
   }
 
   .list {
-    @apply mt-4 ps-8;
+    @apply mt-4 ps-7;
   }
 
   .list-item {
