@@ -106,5 +106,10 @@
     & pre {
       @apply mt-4 rounded-sm overflow-x-scroll bg-neutral-800 py-2 px-3;
     }
+
+    & strong,
+    & em {
+      @apply text-neutral-950 dark:text-neutral-50;
+    }
   }
 }
