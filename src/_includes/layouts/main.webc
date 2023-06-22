@@ -11,7 +11,7 @@ layout: root.webc
       <ul class="flex flex-wrap">
         <!-- <ul class="flex flex-wrap text-neutral-50"> -->
         <li class="pb-1 w-full text-lg font-semibold text-neutral-950 dark:text-neutral-50">
-          <a href="/" @html="$data.site.title"></a>
+          <a href="/" @html="$data.site.title"></a> <span>👋</span>
         </li>
         <script webc:type="js">
           const isCurrentPage = item =>
