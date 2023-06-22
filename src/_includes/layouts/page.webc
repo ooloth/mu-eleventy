@@ -1,0 +1,16 @@
+---
+layout: main.webc
+---
+
+<div class="mx-auto max-w-prose">
+  <header class="markdown">
+    <h1 @text="$data.title || page.fileSlug" class="sr-only"></h1>
+  </header>
+
+  <div @raw="content" class="markdown"></div>
+
+  <!-- <p class="text-[0.8rem] md:text-[0.9rem] uppercase md:min-w-[8rem]">
+      Last updated
+      <time :datetime="htmlDateString(page.date)" @text="readableDate(page.date)"></time>
+    </p> -->
+</div>
