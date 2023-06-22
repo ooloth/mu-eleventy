@@ -17,12 +17,20 @@
   }
 
   .link {
-    @apply underline underline-offset-[0.2rem] decoration-[0.15rem] decoration-rose-300 hover:decoration-neutral-900 dark:hover:decoration-neutral-50 text-neutral-950 dark:text-neutral-50;
+    @apply box-decoration-clone underline underline-offset-[0.2em] decoration-[0.1em] decoration-rose-300  text-neutral-950 dark:text-rose-300;
     text-decoration-skip-ink: none;
+
+    &:hover,
+    &:focus,
+    &:active {
+      /* solid shadow, glow shadow */
+      @apply outline-none dark:bg-rose-300 decoration-neutral-900 dark:decoration-transparent dark:text-neutral-800;
+      box-shadow: 0 0 0 0.15em #fda4af, 0 0 1.75em 0 #fda4af;
+    }
   }
 
-  .link-top-nav {
-    @apply link decoration-transparent;
+  .link-nav {
+    @apply link decoration-[0.15rem] decoration-transparent hover:bg-inherit text-neutral-800 dark:text-neutral-300 hover:text-neutral-50;
   }
 
   .link-subtle {

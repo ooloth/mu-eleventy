@@ -17,7 +17,7 @@ description: todo
               <time datetime="${htmlDateString(post.date)}" class="timestamp md:min-w-[7rem]">${readableDate(
               post.date,
             )}</time>
-              <a href="${post.url}" class="link">${post.data.title || post.fileSlug}</a>
+              <a href="${post.url}"><span class="link">${post.data.title || post.fileSlug}</span></a>
             </li>`,
         )
         .join('')}`;

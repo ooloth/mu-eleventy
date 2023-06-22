@@ -19,7 +19,8 @@ layout: root.webc
             (isPageInCollection(page, $data.collections.posts) && item.url === '/') ||
             (isPageInCollection(page, $data.collections.notes) && item.url === '/notes/');
 
-          const getClasses = item => (isCurrentPage(item) ? 'link-top-nav decoration-rose-300' : 'link-top-nav');
+          const getClasses = item =>
+            isCurrentPage(item) ? 'link-nav decoration-rose-300 dark:text-neutral-50' : 'link-nav';
           // const getClasses = item => (isCurrentPage(item) ? 'link-top-nav decoration-rose-400' : 'link-top-nav');
 
           `${$data.nav.top
@@ -53,7 +54,7 @@ layout: root.webc
           `${$data.nav.bottom
             .map(
               item =>
-                `<li class="mx-2 sm:ms-2"><a href="${item.url}" target="_blank" class="link">${item.title}</a></li>`,
+                `<li class="mx-2 sm:ms-2"><a href="${item.url}" target="_blank" class="link-nav">${item.title}</a></li>`,
             )
             .join('')}`;
         </script>
