@@ -83,7 +83,7 @@
     }
 
     & ul {
-      @apply list list-disc;
+      @apply list list-disc marker:text-rose-300;
     }
 
     & ol {
