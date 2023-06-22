@@ -23,11 +23,11 @@
     &:hover,
     &:focus,
     &:active {
-      @apply shadow-glow outline-none dark:bg-rose-300 decoration-neutral-900 dark:decoration-transparent dark:text-neutral-800;
+      @apply shadow-glow outline-none dark:bg-rose-300 dark:text-neutral-950;
     }
 
     /* group-focus is for instances where I've styled a span inside a flex-child anchor (to avoid full-width stretch) */
-    @apply group-focus:shadow-glow group-focus:outline-none group-focus:dark:bg-rose-300 group-focus:decoration-neutral-900 group-focus:dark:decoration-transparent group-focus:dark:text-neutral-800;
+    @apply group-focus:shadow-glow group-focus:outline-none group-focus:dark:bg-rose-300 group-focus:dark:text-neutral-950;
   }
 
   .link-nav {
