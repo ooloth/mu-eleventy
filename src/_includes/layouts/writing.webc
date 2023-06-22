@@ -16,25 +16,27 @@ layout: main.webc
 
   <article @raw="content" class="markdown"></article>
 
-  <footer class="mt-12 border-t-2">
-    <script webc:type="js">
-      if (!$data.tags) {
-        ('');
-      } else {
-        `<ul class="mt-4 flex flex-wrap">${$data.tags
+  <script webc:type="js">
+    // const isPageWithTags = isPageInCollection(page, $data.collections.posts) || isPageInCollection(page, $data.collections.notes);
+    if (!$data.tags) {
+      ('');
+    } else {
+      `<footer class="mt-12 border-t-2">
+        <ul class="mt-4 flex flex-wrap">${$data.tags
           .map(
             tag =>
               `<li class="me-3"><a href="/tags/${tag}/" class="text-neutral-500 dark:text-neutral-400 hover:underline hover:text-neutral-950 dark:hover:text-rose-300">#${tag}</a></li>`,
           )
-          .join('')}</ul>`;
-      }
-    </script>
+          .join('')}
+        </ul>
+      </footer>`;
+    }
+  </script>
 
-    <!-- <p class="text-[0.8rem] md:text-[0.9rem] uppercase md:min-w-[8rem]">
+  <!-- <p class="text-[0.8rem] md:text-[0.9rem] uppercase md:min-w-[8rem]">
       Last updated
       <time :datetime="htmlDateString(page.date)" @text="readableDate(page.date)"></time>
     </p> -->
-  </footer>
 </div>
 
 <!--
