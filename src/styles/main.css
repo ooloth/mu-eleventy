@@ -12,6 +12,10 @@
     @apply break-after-avoid leading-tight font-semibold text-neutral-950 dark:text-neutral-50;
   }
 
+  .image {
+    @apply rounded-sm bg-neutral-800;
+  }
+
   .link {
     @apply underline underline-offset-[0.2rem] decoration-[0.15rem] decoration-rose-300 hover:decoration-neutral-900 dark:hover:decoration-neutral-50 text-neutral-950 dark:text-neutral-50;
     text-decoration-skip-ink: none;
@@ -39,7 +43,7 @@
 
   .markdown {
     & h1 {
-      @apply heading mb-8 text-4xl leading-[1.15];
+      @apply heading mb-8 text-4xl leading-[1.1];
     }
     & h2 {
       @apply heading mt-8 text-[1.55rem];
@@ -88,7 +92,7 @@
     }
 
     & code {
-      @apply rounded-sm bg-neutral-800 box-decoration-clone py-0.5 px-1 text-base text-rose-300;
+      @apply rounded-sm bg-neutral-800 box-decoration-clone py-0.5 px-1 text-[0.9rem] text-rose-300;
     }
 
     & pre {
