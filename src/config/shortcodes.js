@@ -1,6 +1,6 @@
 /**
  *
- * @param {string*} url
+ * @param {string} url
  * @param {number} width
  * @returns {string}
  */
@@ -25,15 +25,19 @@ function transformCloudinaryImage(url, width) {
 // TODO: build URL using cloudinary url builder using image public_id only: https://cloudinary.com/documentation/javascript_image_transformations#image_optimizations, cloudinary.com/documentation/javascript_integration
 // TODO: get image metadata from cloudinary (e.g. width, height)
 // TODO: add srcset and sizes attributes and test to confirm they make a difference
-function image(url, alt, caption) {
+/**
+ *
+ */
+function image(args) {
+  const { url, alt = '', caption, loading = 'lazy' } = args;
+
   const transformedUrl = transformCloudinaryImage(url, 800);
-  const altText = alt ?? '';
 
   if (caption) {
-    return `<figure><img src="${transformedUrl}" alt="${altText}" /><figcaption>${caption}</figcaption></figure>`;
+    return `<figure><img src="${transformedUrl}" alt="${alt}" loading="${loading}" class="image" /><figcaption>${caption}</figcaption></figure>`;
   }
 
-  return `<img src="${transformedUrl}" alt="${altText}" />`;
+  return `<img src="${transformedUrl}" alt="${alt}" loading="${loading}" class="image" />`;
 }
 
 module.exports = { image };
