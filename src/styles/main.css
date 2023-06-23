@@ -58,10 +58,10 @@
       @apply heading mt-8 text-[1.55rem];
     }
     & h3 {
-      @apply heading mt-4 text-2xl;
+      @apply heading mt-8 text-2xl;
     }
     & h4 {
-      @apply heading mt-4 text-xl;
+      @apply heading mt-6 text-xl;
     }
     & h5 {
       @apply heading mt-4 text-lg;
