@@ -5,7 +5,7 @@ module.exports = {
     extend: {
       boxShadow: {
         /* solid shadow, glow shadow */
-        glow: '0 0 0 0.15em #fda4af, 0 0 1.75em 0 #fda4af',
+        glow: '0 0 0 0.2em #fda4af, 0 0 2em 0 #fda4af',
       },
     },
   },
