@@ -39,12 +39,12 @@ const sortByParent = collection => {
   collection.forEach(item => {
     // If there is a parent, push the current item into its parent's children array
     if (item.data.parent) {
-      if (!tree[item.data.parent]) {
+      if (!tree[item.data.parent.toLowerCase()]) {
         // TODO: throw an error to avoid hiding the page link indefinitely?
         console.log(`tree does not contain ${item.data.parent}`);
       }
 
-      tree[item.data.parent].children.push(item);
+      tree[item.data.parent.toLowerCase()].children.push(item);
     }
     // If there is no parent, the item is a root and is pushed into the roots array
     else roots.push(item);
