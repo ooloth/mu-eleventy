@@ -31,7 +31,7 @@
   }
 
   .link-nav {
-    @apply link decoration-[0.15rem] decoration-transparent dark:text-neutral-300;
+    @apply link decoration-[0.15em] decoration-transparent dark:text-neutral-300;
   }
 
   .link-subtle {
