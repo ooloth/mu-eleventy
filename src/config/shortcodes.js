@@ -1,3 +1,5 @@
+const eleventyFetch = require('@11ty/eleventy-fetch');
+
 /**
  *
  * @param {string} url
@@ -28,15 +30,28 @@ function getCloudinaryUrl(url, width) {
 /**
  *
  */
-function image(args) {
-  const { url, alt = '', caption, loading = 'lazy', widths = ['800px'] } = args;
+async function image(args) {
+  const { url, loading = 'lazy', widths = ['800px'] } = args;
   const decoding = loading === 'eager' ? 'sync' : 'async';
 
-  const transformedUrl = getCloudinaryUrl(url, 800);
+  const src = getCloudinaryUrl(url, 800);
+  const alt = ''; // TODO: get from "Description" metadata
+  const caption = ''; // TODO: get from "Title" metadata
   const srcset = ''; // TODO: generate from widths prop
   const sizes = ''; // TODO: generate from widths prop
 
-  const img = `<img src="${transformedUrl}" alt="${alt}" loading="${loading}" decoding="${decoding}" class="image" />`;
+  const source_low = `https://res.cloudinary.com/***********/image/upload/c_scale,w_400/f_auto/blog/${params.filename}`;
+  const source_med = `https://res.cloudinary.com/***********/image/upload/c_scale,w_800/f_auto/blog/${params.filename}`;
+  const source_high = `https://res.cloudinary.com/***********/image/upload/c_scale,w_1600/f_auto/blog/${params.filename}`;
+  const infoURL = `https://res.cloudinary.com/***********/image/upload/fl_getinfo/blog/${params.filename}`;
+  const result = await eleventyFetch(infoURL, {
+    duration: '1y',
+    type: 'json',
+  }).catch(error => {
+    console.log(`oh no...${error}`);
+  });
+
+  const img = `<img src=${src} alt=${alt} loading=${loading} decoding=${decoding} class="image" />`;
 
   return caption ? `<figure>${img}<figcaption>${caption}</figcaption></figure>` : img;
 }
