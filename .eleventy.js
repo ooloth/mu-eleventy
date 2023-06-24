@@ -12,21 +12,12 @@ const pluginWebC = require('@11ty/eleventy-plugin-webc');
 const { removeDrafts, removePrivate, removeScheduled, sortByParent } = require('./src/config/collections.js');
 const { image } = require('./src/config/shortcodes.js');
 
-// const pluginImages = require('./src/config/plugin.images.js');
-
 module.exports = function (config) {
-  // Copy the contents of the `public` folder to the output folder
-  // For example, `./public/styles/` ends up in `_site/styles/`
   config.addPassthroughCopy({
+    // Copy `public` folder contents to output folder (e.g .`./public/styles/` -> `_site/styles/`)
     './public/': '/',
     './node_modules/prismjs/themes/prism-okaidia.css': '/styles/prism-okaidia.css',
   });
-
-  // Run Eleventy when these files change:
-  // https://www.11ty.dev/docs/watch-serve/#add-your-own-watch-targets
-
-  // Watch content images for the image pipeline.
-  // eleventyConfig.addWatchTarget('content/**/*.{svg,webp,png,jpeg}');
 
   // Official plugins
   config.addPlugin(EleventyHtmlBasePlugin);
@@ -44,9 +35,6 @@ module.exports = function (config) {
 
   // Community plugins
   config.addPlugin(pluginPostCSS);
-
-  // Local plugins
-  // eleventyConfig.addPlugin(pluginImages);
 
   // Collections
 
@@ -75,19 +63,9 @@ module.exports = function (config) {
     return removePrivate(sortByParent(notes));
   });
 
-  // Timeline in descending order
-  // See: https://www.11ty.dev/docs/collections/#getfilteredbyglob(-glob-)
-  // config.addCollection('timeline', collectionApi =>
-  //   collectionApi
-  //     .getFilteredByGlob('src/content/timeline/**/*.md')
-  //     .sort((a, b) => b.inputPath.localeCompare(a.inputPath)),
-  // );
-
   // Pages
   // See: https://www.11ty.dev/docs/collections/#getfilteredbyglob(-glob-)
-  config.addCollection('pages', collectionApi =>
-    collectionApi.getFilteredByGlob(['src/content/pages/**/*.md', 'src/pages/**/*.webc']),
-  );
+  config.addCollection('pages', collectionApi => collectionApi.getFilteredByGlob('src/content/pages/**/*.md'));
 
   // Data extensions
   config.addDataExtension('yaml', contents => yaml.load(contents));
