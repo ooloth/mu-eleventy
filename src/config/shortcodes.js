@@ -44,13 +44,15 @@ async function image(params) {
     id,
     loading = 'lazy',
     widths = [
-      // 400px phone size at 1x, 2x and 3x DPR (browser asks for pixel multiple it needs)
-      '400',
-      '800',
-      '1200',
-      // 720px max layout size at 2x and 3x DPR (skipped 1x since 800px is already included above)
-      '1440',
-      '2160',
+      '350', // image layout width on phone at 1x DPR
+      '700', // image layout width on phone at 2x DPR
+      '850',
+      '1020',
+      '1200', // image layout width on phone at 3x DPR
+      '1440', // max image layout width at 2x DPR (skipped 1x since 700px is already included above)
+      '1680',
+      '1920',
+      '2160', // max image layout width at 3x DPR
     ],
     // For blog posts and notes, image layout size currently maxes out when browser hits 768px
     // NOTE: browser takes first media query that's true, so be careful about the order
