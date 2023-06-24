@@ -12,6 +12,8 @@ const pluginWebC = require('@11ty/eleventy-plugin-webc');
 const { removeDrafts, removePrivate, removeScheduled, sortByParent } = require('./src/config/collections.js');
 const { image } = require('./src/config/shortcodes.js');
 
+require('dotenv').config();
+
 module.exports = function (config) {
   config.addPassthroughCopy({
     // Copy `public` folder contents to output folder (e.g .`./public/styles/` -> `_site/styles/`)
