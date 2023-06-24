@@ -4,7 +4,7 @@
  * @param {number} width
  * @returns {string}
  */
-function transformCloudinaryImage(url, width) {
+function getCloudinaryUrl(url, width) {
   const w = width ?? 'auto';
 
   if (url.includes('cloudinary')) {
@@ -29,15 +29,16 @@ function transformCloudinaryImage(url, width) {
  *
  */
 function image(args) {
-  const { url, alt = '', caption, loading = 'lazy' } = args;
+  const { url, alt = '', caption, loading = 'lazy', widths = ['800px'] } = args;
+  const decoding = loading === 'eager' ? 'sync' : 'async';
 
-  const transformedUrl = transformCloudinaryImage(url, 800);
+  const transformedUrl = getCloudinaryUrl(url, 800);
+  const srcset = ''; // TODO: generate from widths prop
+  const sizes = ''; // TODO: generate from widths prop
 
-  if (caption) {
-    return `<figure><img src="${transformedUrl}" alt="${alt}" loading="${loading}" class="image" /><figcaption>${caption}</figcaption></figure>`;
-  }
+  const img = `<img src="${transformedUrl}" alt="${alt}" loading="${loading}" decoding="${decoding}" class="image" />`;
 
-  return `<img src="${transformedUrl}" alt="${alt}" loading="${loading}" class="image" />`;
+  return caption ? `<figure>${img}<figcaption>${caption}</figcaption></figure>` : img;
 }
 
 module.exports = { image };
