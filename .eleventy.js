@@ -71,7 +71,8 @@ module.exports = function (config) {
       .filter(item => item.data.destination !== 'blog')
       .sort((a, b) => a.inputPath.localeCompare(b.inputPath));
 
-    return sortByParent(removePrivate(notes));
+    // Remove private notes AFTER sorting by parents to automatically remove all children of private parents as well
+    return removePrivate(sortByParent(notes));
   });
 
   // Timeline in descending order
