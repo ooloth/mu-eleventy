@@ -9,3 +9,6 @@ layout: main.webc
 </header>
 
 <div @raw="content" class="markdown mx-auto max-w-prose"></div>
+
+<!-- TODO: add images here? -->
+<aside></aside>
