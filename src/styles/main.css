@@ -144,5 +144,9 @@
         @apply rounded-sm;
       }
     }
+
+    & .eleventy-plugin-embed-twitter {
+      @apply my-5;
+    }
   }
 }
