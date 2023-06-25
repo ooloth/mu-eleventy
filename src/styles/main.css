@@ -1,11 +1,6 @@
 @import 'tailwindcss/base';
-/* @import "./custom-base-styles.css"; */
-
 @import 'tailwindcss/components';
-/* @import "./custom-components.css"; */
-
 @import 'tailwindcss/utilities';
-/* @import "./custom-utilities.css"; */
 
 @layer components {
   .heading {
@@ -17,13 +12,13 @@
   }
 
   .link {
-    @apply box-decoration-clone underline underline-offset-[0.2em] decoration-[0.1em] decoration-rose-300  text-neutral-950 dark:text-rose-300;
+    @apply box-decoration-clone underline underline-offset-[0.2em] decoration-[0.18em] dark:decoration-[0.1em] decoration-rose-300  text-neutral-950 dark:text-rose-300;
     text-decoration-skip-ink: none;
 
     &:hover,
     &:focus,
     &:active {
-      @apply shadow-glow outline-none dark:bg-rose-300 dark:text-neutral-950;
+      @apply shadow-glow outline-none bg-rose-300 text-neutral-950;
     }
 
     /* group-focus is for instances where I've styled a span inside a flex-child anchor (to avoid full-width stretch) */
@@ -31,7 +26,7 @@
   }
 
   .link-nav {
-    @apply link decoration-[0.15em] decoration-transparent dark:text-neutral-300;
+    @apply link dark:decoration-[0.15em] decoration-transparent dark:text-neutral-300;
   }
 
   .link-subtle {
