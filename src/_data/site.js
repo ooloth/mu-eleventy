@@ -2,7 +2,10 @@ module.exports = {
   title: 'Michael Uloth',
   url: 'https://michaeluloth.com/',
   language: 'en',
-  description: 'Blurb',
+  description: {
+    site: '',
+    rss: 'Blog posts by Michael Uloth',
+  },
   author: {
     name: 'Michael Uloth',
     email: 'michaeluloth@gmail.com',
