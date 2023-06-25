@@ -79,7 +79,7 @@ async function image(params) {
     .map(width => `${insertOptimizationTransformations(imageDetails.secure_url, width)} ${width}w`)
     .join(', ');
 
-  const img = `<img src="${src}" srcset="${srcset}" sizes="${sizes}" alt="${alt}" width="${imageDetails.width}" height="${imageDetails.height}" loading="${loading}" decoding="${decoding}" class="image" />`;
+  const img = `<img src="${src}" srcset="${srcset}" sizes="${sizes}" alt="${alt}" width="${imageDetails.width}" height="${imageDetails.height}" loading="${loading}" decoding="${decoding}" />`;
 
   return caption ? `<figure>${img}<figcaption>${caption}</figcaption></figure>` : img;
 }
