@@ -3,11 +3,12 @@ const markdownItAnchor = require('markdown-it-anchor');
 const yaml = require('js-yaml');
 
 const { EleventyHtmlBasePlugin } = require('@11ty/eleventy');
-const pluginBundle = require('@11ty/eleventy-plugin-bundle');
-const pluginPostCSS = require('eleventy-plugin-postcss');
-const pluginRss = require('@11ty/eleventy-plugin-rss');
-const pluginSyntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
-const pluginWebC = require('@11ty/eleventy-plugin-webc');
+const bundle = require('@11ty/eleventy-plugin-bundle');
+const embedEverything = require('eleventy-plugin-embed-everything');
+const postCSS = require('eleventy-plugin-postcss');
+const rss = require('@11ty/eleventy-plugin-rss');
+const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
+const webC = require('@11ty/eleventy-plugin-webc');
 
 const { removeDrafts, removePrivate, removeScheduled, sortByParent } = require('./src/config/collections.js');
 const { image } = require('./src/config/shortcodes.js');
@@ -23,12 +24,12 @@ module.exports = function (config) {
 
   // Official plugins
   config.addPlugin(EleventyHtmlBasePlugin);
-  config.addPlugin(pluginBundle);
-  config.addPlugin(pluginRss);
-  config.addPlugin(pluginSyntaxHighlight, {
+  config.addPlugin(bundle);
+  config.addPlugin(rss);
+  config.addPlugin(syntaxHighlight, {
     preAttributes: { tabindex: 0 },
   });
-  config.addPlugin(pluginWebC, {
+  config.addPlugin(webC, {
     bundlePluginOptions: {}, // options passed to @11ty/eleventy-plugin-bundle
     components: 'src/_includes/components/**/*.webc', // glob to find no-import global components
     transformData: {}, // additional global data used in the Eleventy WebC transform
@@ -36,7 +37,8 @@ module.exports = function (config) {
   });
 
   // Community plugins
-  config.addPlugin(pluginPostCSS);
+  config.addPlugin(embedEverything);
+  config.addPlugin(postCSS);
 
   // Collections
 
