@@ -140,6 +140,16 @@
     & .eleventy-plugin-youtube-embed {
       @apply my-5;
 
+      /* Remove translucent black bar */
+      & lite-youtube::before {
+        background-image: none;
+      }
+
+      /* Make play button red */
+      & .lty-playbtn {
+        filter: none;
+      }
+
       & iframe {
         @apply rounded-sm;
       }

@@ -37,7 +37,16 @@ module.exports = function (config) {
   });
 
   // Community plugins
-  config.addPlugin(embedEverything);
+  config.addPlugin(embedEverything, {
+    youtube: {
+      options: {
+        // See: https://github.com/gfscott/eleventy-plugin-embed-everything/tree/main/packages/youtube#lite-youtube-embed
+        lite: {
+          thumbnailQuality: 'maxresdefault',
+        },
+      },
+    },
+  });
   config.addPlugin(postCSS);
 
   // Collections
