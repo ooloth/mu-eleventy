@@ -1,0 +1,39 @@
+# see: https://docs.netlify.com/routing/redirects/#syntax-for-the-redirects-file
+
+# old page routes
+/blog            /
+/bookmarks       /notes
+/codes           /
+/contact         /about
+/lab             /
+/metrics         /
+/opera           /
+/sings           /
+/tax-preparation /
+/uses            /
+/web-design      /
+/websites        /
+/writes          /
+/writing         /
+
+# old post routes
+/github-repo-pr-template /
+/how-to-shrink-video-file-size-using-ffmpeg /
+/translate-z /
+/what-is-a-factory-function /
+/writing-great-alt-text
+/levels-of-abstraction-in-testing
+/slack-alerts-for-cms-errors
+/filter-boolean
+/using-graphql-with-gatsby
+/adding-content-to-a-gatsby-project
+/writing-css-in-js-in-a-gatsby-project
+/writing-css-in-a-gatsby-project
+/wrapping-pages-in-a-layout-component
+/adding-pages-to-a-gatsby-project
+/writing-html-in-a-gatsby-project
+/gatsbys-default-files-and-folders
+/starting-a-new-gatsby-project
+/what-is-gatsby
+/introducing-gatsby-tutorials
+/how-to-set-up-a-mac-for-web-development
