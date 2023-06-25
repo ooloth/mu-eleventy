@@ -134,7 +134,15 @@
     }
 
     & blockquote {
-      @apply ms-4 border-l-4 border-rose-300 pl-3 italic text-neutral-50
+      @apply ms-4 border-l-4 border-rose-300 pl-3 italic text-neutral-50;
+    }
+
+    & .eleventy-plugin-youtube-embed {
+      @apply my-8;
+
+      & iframe {
+        @apply rounded-sm;
+      }
     }
   }
 }
