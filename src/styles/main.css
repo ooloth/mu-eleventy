@@ -132,5 +132,9 @@
     & em {
       @apply text-neutral-950 dark:text-neutral-50;
     }
+
+    & blockquote {
+      @apply ms-4 border-l-4 border-rose-300 pl-3 italic text-neutral-50
+    }
   }
 }
