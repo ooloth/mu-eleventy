@@ -3,7 +3,7 @@ module.exports = {
     { title: 'writing', url: '/' },
     { title: 'notes', url: '/notes/' },
     { title: 'about', url: '/about/' },
-    { title: 'likes', url: '/likes/' },
+    // { title: 'likes', url: '/likes/' },
   ],
   bottom: [
     { title: 'RSS', url: '/feed.xml' },
