@@ -8,7 +8,7 @@ layout: main.webc
   <h1 @text="$data.title || page.fileSlug" class="sr-only"></h1>
 </header>
 
-<div @raw="content" class="markdown mx-auto max-w-prose"></div>
+<div @raw="content" class="markdown mx-auto max-w-2xl"></div>
 
 <!-- TODO: add images here? -->
 <aside></aside>

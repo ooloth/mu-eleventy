@@ -2,7 +2,7 @@
 layout: main.webc
 ---
 
-<div class="mx-auto max-w-prose">
+<div class="mx-auto max-w-2xl">
   <header class="markdown">
     <time
       webc:if="isPageInCollection(page, $data.collections.posts)"
