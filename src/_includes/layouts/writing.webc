@@ -16,6 +16,7 @@ layout: main.webc
 
   <article @raw="content" class="markdown"></article>
 
+  <!--
   <script webc:type="js">
     // const isPageWithTags = isPageInCollection(page, $data.collections.posts) || isPageInCollection(page, $data.collections.notes);
     if (!$data.tags) {
@@ -32,11 +33,14 @@ layout: main.webc
       </footer>`;
     }
   </script>
+  -->
 
-  <!-- <p class="text-[0.8rem] md:text-[0.9rem] uppercase md:min-w-[8rem]">
-      Last updated
-      <time :datetime="htmlDateString(page.date)" @text="readableDate(page.date)"></time>
-    </p> -->
+  <!--
+  <p class="text-[0.8rem] md:text-[0.9rem] uppercase md:min-w-[8rem]">
+    Last updated
+    <time :datetime="htmlDateString(page.date)" @text="readableDate(page.date)"></time>
+  </p>
+  -->
 </div>
 
 <!--
