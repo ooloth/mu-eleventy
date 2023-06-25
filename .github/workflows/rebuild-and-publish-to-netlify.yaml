@@ -3,6 +3,15 @@
 
 name: Rebuild Netlify site
 
+env:
+  CLOUDINARY_API_KEY: ${{ secrets.CLOUDINARY_API_KEY }}
+  CLOUDINARY_API_SECRET: ${{ secrets.CLOUDINARY_API_SECRET }}
+  CLOUDINARY_CLOUD_NAME: ${{ secrets.CLOUDINARY_CLOUD_NAME }}
+  # Netlify settings "Site name"
+  NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+  # Netlify personal access token created here: https://app.netlify.com/user/applications
+  NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+
 on:
   push:
     branches:
@@ -37,13 +46,5 @@ jobs:
       - run: npm run build
 
       - name: Publish to Netlify
-        env:
-          # Netlify settings "Site name"
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          # Netlify personal access token created here: https://app.netlify.com/user/applications
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          CLOUDINARY_API_KEY: ${{ secrets.CLOUDINARY_API_KEY }}
-          CLOUDINARY_API_SECRET: ${{ secrets.CLOUDINARY_API_SECRET }}
-          CLOUDINARY_CLOUD_NAME: ${{ secrets.CLOUDINARY_CLOUD_NAME }}
         # Deploy updated "_site" folder to production Netlify branch
         run: npx netlify-cli deploy --prod --message "deploy from GitHub Action" --dir=_site
