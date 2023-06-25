@@ -34,7 +34,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          repository: ooloth/mu-11ty
+          repository: ooloth/michaeluloth.com
           token: ${{ secrets.ACTIONS_TOKEN }}
           submodules: recursive
       - uses: actions/setup-node@v3

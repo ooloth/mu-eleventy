@@ -1,7 +1,6 @@
 {
-  "name": "eleventy-base-blog",
-  "version": "8.0.0",
-  "description": "A starter repository for a blog web site using the Eleventy site generator.",
+  "name": "michaeluloth.com",
+  "description": "The personal website of Michael Uloth",
   "repository": {
     "type": "git",
     "url": "git://github.com/ooloth/michaeluloth.com.git"
@@ -15,19 +14,6 @@
     "url": "https://github.com/ooloth/michaeluloth.com/issues"
   },
   "homepage": "https://github.com/ooloth/michaeluloth.com#readme",
-  "scripts": {
-    "benchmark": "DEBUG=Eleventy:Benchmark* npx @11ty/eleventy",
-    "build": "ELEVENTY_PRODUCTION=true eleventy",
-    "debug": "DEBUG=Eleventy* npx @11ty/eleventy",
-    "debugstart": "DEBUG=Eleventy* npx @11ty/eleventy --serve --quiet",
-    "format:check": "npm run prettier -- --list-different",
-    "format:fix": "npm run prettier -- --write",
-    "lint": "eslint '**/*.{js,ts,tsx}' --ignore-path .gitignore",
-    "prettier": "prettier \"**/*.+(css|graphql|html|js|json|jsonc|jsx|md|mdx|toml|ts|tsx|webc|yaml|yml)\" --ignore-path .gitignore",
-    "start": "eleventy --serve --quiet",
-    "types:check": "tsc",
-    "validate": "npm run format:check && npm run lint && npm run types:check"
-  },
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
     "@11ty/eleventy-img": "^3.1.0",
@@ -57,5 +43,18 @@
   "dependencies": {
     "@11ty/eleventy-plugin-webc": "^0.11.1",
     "js-yaml": "^4.1.0"
+  },
+  "scripts": {
+    "benchmark": "DEBUG=Eleventy:Benchmark* npx @11ty/eleventy",
+    "build": "ELEVENTY_PRODUCTION=true eleventy",
+    "debug": "DEBUG=Eleventy* npx @11ty/eleventy",
+    "debugstart": "DEBUG=Eleventy* npx @11ty/eleventy --serve --quiet",
+    "format:check": "npm run prettier -- --list-different",
+    "format:fix": "npm run prettier -- --write",
+    "lint": "eslint '**/*.{js,ts,tsx}' --ignore-path .gitignore",
+    "prettier": "prettier \"**/*.+(css|graphql|html|js|json|jsonc|jsx|md|mdx|toml|ts|tsx|webc|yaml|yml)\" --ignore-path .gitignore",
+    "start": "eleventy --serve --quiet",
+    "types:check": "tsc",
+    "validate": "npm run format:check && npm run lint && npm run types:check"
   }
 }
