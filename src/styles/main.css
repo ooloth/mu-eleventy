@@ -101,11 +101,11 @@
     }
 
     img {
-      @apply image mt-6;
+      @apply image mt-5;
 
       /* paragraphs that follow an image should have a bit more margin above them */
       & + p {
-        @apply mt-6;
+        @apply mt-5;
       }
     }
 
@@ -116,7 +116,7 @@
 
       /* paragraphs that follow an image should have a bit more margin above them */
       & + p {
-        @apply mt-6;
+        @apply mt-5;
       }
     }
 
@@ -138,7 +138,7 @@
     }
 
     & .eleventy-plugin-youtube-embed {
-      @apply my-8;
+      @apply my-5;
 
       & iframe {
         @apply rounded-sm;
