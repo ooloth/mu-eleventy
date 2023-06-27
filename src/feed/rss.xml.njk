@@ -19,7 +19,11 @@ permalink: /rss.xml
 		<title>{{ post.data.title }}</title>
 		<link href="{{ absolutePostUrl }}"/>
 		<updated>{{ post.date | dateToRfc3339 }}</updated>
-		<id>{{ absolutePostUrl }}</id>
+		{% if post.data.feedId %}
+			<id>{{ post.data.feedId }}</id>
+		{% else %}
+			<id>{{ absolutePostUrl }}</id>
+		{% endif %}
 		<content type="html">{{ post.templateContent | transformWithHtmlBase(absolutePostUrl, post.url) }}</content>
 	</entry>
 	{%- endfor %}
