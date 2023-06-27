@@ -72,7 +72,7 @@ async function image(params) {
     throw Error(`Error fetching image details for "${id}" using the URL "${detailsUrl}":\n\n${error}\n`);
   });
 
-  const src = insertOptimizationTransformations(imageDetails.secure_url, widths.at(-1));
+  const src = insertOptimizationTransformations(imageDetails.secure_url, 1440);
   const alt = imageDetails?.context?.custom?.alt ?? ' '; // comes from "Description" field in contextual metadata
   const caption = imageDetails?.context?.custom?.caption; // comes from "Title" field in contextual metadata
   const srcset = widths
