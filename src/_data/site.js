@@ -16,6 +16,7 @@ module.exports = {
   manifest: {
     display: 'standalone',
     shortName: 'MU',
+    startUrl: '.',
   },
   title: 'Michael Uloth',
   url: 'https://michaeluloth.com/',
