@@ -4,7 +4,7 @@ dynamicPermalink: false
 permalink: sitemap.xml
 ---
 
-<!-- see: https://github.com/solution-loisir/webc-starter-kit/blob/efc5170a336e65425ec9a32a81277d1bfaeca69f/src/sitemap.webc -->
+<!--- see: https://github.com/solution-loisir/webc-starter-kit/blob/efc5170a336e65425ec9a32a81277d1bfaeca69f/src/sitemap.webc --->
 
 <?xml version="1.0" encoding="utf-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
