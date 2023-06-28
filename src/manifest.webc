@@ -1,0 +1,31 @@
+---
+eleventyExcludeFromCollections: true
+dynamicPermalink: false
+permalink: /site.webmanifest
+---
+
+<!--- see: https://developer.mozilla.org/en-US/docs/Web/Manifest --->
+<!--- see: https://github.com/solution-loisir/webc-starter-kit/blob/efc5170a336e65425ec9a32a81277d1bfaeca69f/src/manifest.webc --->
+<script webc:type="js">
+  `{
+    "name": "${site.title}",
+    "short_name": "${site.manifest.shortName}",
+    "description": "${site.description.site}",
+    "icons": [
+      {
+        "src": "favicons/android-chrome-192x192.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "favicons/android-chrome-512x512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "start_url": "${site.manifest.startUrl}",
+    "background_color": "${site.color.background}",
+    "display": "${site.manifest.display}",
+    "theme_color": "${site.color.theme}"
+  }`;
+</script>

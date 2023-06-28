@@ -21,6 +21,7 @@
     "@11ty/eleventy-plugin-bundle": "^1.0.4",
     "@11ty/eleventy-plugin-rss": "^1.2.0",
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
+    "@prettier/plugin-xml": "^2.2.0",
     "@types/node": "^20.2.5",
     "@typescript-eslint/eslint-plugin": "^5.59.8",
     "@typescript-eslint/parser": "^5.59.8",
@@ -52,7 +53,7 @@
     "format:check": "npm run prettier -- --list-different",
     "format:fix": "npm run prettier -- --write",
     "lint": "eslint '**/*.{js,ts,tsx}' --ignore-path .gitignore",
-    "prettier": "prettier \"**/*.+(css|graphql|html|js|json|jsonc|jsx|md|mdx|toml|ts|tsx|webc|yaml|yml)\" --ignore-path .gitignore",
+    "prettier": "prettier \"**/*.+(css|graphql|html|js|json|jsonc|jsx|md|mdx|toml|ts|tsx|webc|xml|yaml|yml)\"",
     "start": "eleventy --serve --quiet",
     "types:check": "tsc",
     "validate": "npm run format:check && npm run lint && npm run types:check"

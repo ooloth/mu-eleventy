@@ -1,6 +1,5 @@
 .cache
 _site
 node_modules
-public
 package-lock.json
 src/content

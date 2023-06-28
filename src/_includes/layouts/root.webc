@@ -10,6 +10,17 @@
     <title @text="title || $data.site.title"></title>
     <meta name="description" :content="description || $data.site.description" />
 
+    <!--- Icons --->
+    <!--- see: https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/The_head_metadata_in_HTML#adding_custom_icons_to_your_site --->
+    <link rel="shortcut icon" href="/favicons/favicon.ico" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml" />
+
     <!--- Styles --->
     <link href="/styles/main.css" rel="stylesheet" webc:keep />
 
