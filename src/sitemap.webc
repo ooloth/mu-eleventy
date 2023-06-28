@@ -11,11 +11,15 @@ permalink: sitemap.xml
   <script webc:type="js" webc:is="template">
     const path = require('path');
     collections.all
+      // sort pages by url
+      .sort((a, b) => a.url.localeCompare(b.url))
+      // wrap all non-css page urls sitemap item markup
       .map(page => {
         if (typeof page.url === 'string' && !page.url.includes('.css')) {
           return `<url><loc>${path.join(site.url, page.url)}</loc></url>`;
         }
       })
+      // convert array to string
       .join('');
   </script>
 </urlset>
