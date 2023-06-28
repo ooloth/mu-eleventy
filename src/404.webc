@@ -10,5 +10,5 @@ permalink: 404.html
 
   <p class="mt-4 text-9xl sm:text-[10rem] md:text-[11rem] lg:text-[12rem] xl:text-[13rem] font-black">404</p>
 
-  <a href="javascript:history.back()" class="mt-6 link text-xl md:text-2xl">Go Back</a>
+  <a href="/" class="mt-6 link text-xl md:text-2xl">Go Home</a>
 </div>
