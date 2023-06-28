@@ -24,7 +24,7 @@ permalink: /rss.xml
 		{% else %}
 			<id>{{ absolutePostUrl }}</id>
 		{% endif %}
-		<content type="html">{{ post.templateContent | transformWithHtmlBase(absolutePostUrl, post.url) }}</content>
+		<content type="html">{{ post.content | transformWithHtmlBase(absolutePostUrl, post.url) }}</content>
 	</entry>
 	{%- endfor %}
 </feed>
