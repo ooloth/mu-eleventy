@@ -1,0 +1,29 @@
+---
+eleventyExcludeFromCollections: true
+dynamicPermalink: false
+permalink: manifest.json
+---
+<script webc:type="js">
+  `{
+  "short_name": "${meta.title}",
+    "name": "${meta.title + '. ' + meta.subtitle}",
+    "description": "${meta.description}",
+    "icons": [
+      {
+        "src": "/android-chrome-192x192.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "/android-chrome-512x512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "start_url": "${meta.url}",
+    "background_color": "${meta.color.background}",
+    "display": "${meta.display}",
+    "scope": "${meta.url}",
+    "theme_color": "${meta.color.theme}"
+    }`;
+</script>
