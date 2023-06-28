@@ -1,6 +1,7 @@
 ---
 eleventyExcludeFromCollections: true
 layout: main.webc
+dynamicPermalink: false
 permalink: 404.html
 ---
 
