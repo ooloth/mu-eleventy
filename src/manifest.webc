@@ -3,27 +3,29 @@ eleventyExcludeFromCollections: true
 dynamicPermalink: false
 permalink: manifest.json
 ---
+
+<!--- see: https://github.com/solution-loisir/webc-starter-kit/blob/efc5170a336e65425ec9a32a81277d1bfaeca69f/src/manifest.webc --->
 <script webc:type="js">
   `{
-  "short_name": "${meta.title}",
-    "name": "${meta.title + '. ' + meta.subtitle}",
-    "description": "${meta.description}",
+    "name": "${site.title}",
+    "short_name": "${site.manifest.shortName}",
+    "description": "${site.description.site}",
     "icons": [
       {
-        "src": "/android-chrome-192x192.png",
+        "src": "favicons/android-chrome-192x192.png",
         "type": "image/png",
         "sizes": "192x192"
       },
       {
-        "src": "/android-chrome-512x512.png",
+        "src": "favicon/android-chrome-512x512.png",
         "type": "image/png",
         "sizes": "512x512"
       }
     ],
-    "start_url": "${meta.url}",
-    "background_color": "${meta.color.background}",
-    "display": "${meta.display}",
-    "scope": "${meta.url}",
-    "theme_color": "${meta.color.theme}"
-    }`;
+    "start_url": "${site.url}",
+    "background_color": "${site.color.background}",
+    "display": "${site.display}",
+    "scope": "${site.url}",
+    "theme_color": "${site.color.theme}"
+  }`;
 </script>
