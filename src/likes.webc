@@ -1,5 +1,7 @@
 ---
 layout: main.webc
+# TODO: remove this line when publishing
+eleventyExcludeFromCollections: true
 ---
 
 <h1>Likes</h1>

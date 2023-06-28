@@ -1,0 +1,11 @@
+---
+eleventyExcludeFromCollections: true
+dynamicPermalink: false
+permalink: robots.txt
+---
+
+<!--- see: https://developers.google.com/search/docs/crawling-indexing/robots/create-robots-txt --->
+<script webc:type="js" webc:is="template">
+  const path = require('path');
+  `User-agent: *\nSitemap: ${path.join(site.url, 'sitemap.xml')}`;
+</script>
