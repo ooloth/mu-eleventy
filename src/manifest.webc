@@ -1,9 +1,10 @@
 ---
 eleventyExcludeFromCollections: true
 dynamicPermalink: false
-permalink: manifest.json
+permalink: /manifest.json
 ---
 
+<!--- see: https://developer.mozilla.org/en-US/docs/Web/Manifest --->
 <!--- see: https://github.com/solution-loisir/webc-starter-kit/blob/efc5170a336e65425ec9a32a81277d1bfaeca69f/src/manifest.webc --->
 <script webc:type="js">
   `{
@@ -22,10 +23,9 @@ permalink: manifest.json
         "sizes": "512x512"
       }
     ],
-    "start_url": "${site.url}",
+    "start_url": "${site.manifest.startUrl}",
     "background_color": "${site.color.background}",
-    "display": "${site.display}",
-    "scope": "${site.url}",
+    "display": "${site.manifest.display}",
     "theme_color": "${site.color.theme}"
   }`;
 </script>
