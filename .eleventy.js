@@ -72,8 +72,9 @@ module.exports = function (config) {
       .filter(item => item.data.destination !== 'blog')
       .sort((a, b) => a.inputPath.localeCompare(b.inputPath));
 
-    // Remove private notes AFTER sorting by parents to automatically remove all children of private parents as well
-    return removePrivate(sortByParent(notes));
+    // Remove private notes BEFORE sorting by parents to remove private children and grandchildren
+    // Remove private notes AFTER sorting by parents to automatically remove all non-private children of private parents as well
+    return removePrivate(sortByParent(removePrivate(notes)));
   });
 
   // Pages
