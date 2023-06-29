@@ -22,7 +22,11 @@
     <meta name="twitter:creator" :content="$data.site.openGraph.twitter.creator" />
     <meta name="twitter:site" :content="$data.site.openGraph.twitter.site" />
     <meta property="og:type" :content="$data.site.openGraph.type" />
-    <meta property="og:image" :content="ogImage || $data.site.openGraph.image" />
+    <script webc:type="js" webc:is="template">
+      const pathAndExtension = ogImage || $data.site.openGraph.image;
+      const url = `https://res.cloudinary.com/ooloth/image/upload/c_scale,w_1200,f_auto,q_auto/${pathAndExtension}`;
+      `<meta property="og:image" content="${url}" />`;
+    </script>
     <meta property="og:locale" :content="$data.site.openGraph.locale" />
     <meta property="og:site_name" :content="$data.site.title" />
 
