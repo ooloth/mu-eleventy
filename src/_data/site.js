@@ -18,6 +18,17 @@ module.exports = {
     shortName: 'MU',
     startUrl: '.',
   },
+  openGraph: {
+    image: 'https://res.cloudinary.com/ooloth/image/upload/c_scale,w_1200,f_auto,q_auto/v1645057009/mu/michael-landscape.jpg',
+    locale: 'en_CA',
+    twitter: {
+      card: 'summary_large_image',
+      creator: '@ooloth',
+      site: '@ooloth',
+    },
+    type: 'website',
+
+  },
   title: 'Michael Uloth',
   url: 'https://michaeluloth.com/',
 };
