@@ -9,13 +9,14 @@
     <!--- SEO --->
     <title @text="title || $data.site.title"></title>
     <meta name="description" :content="description || $data.site.description.site" />
-    <link rel="canonical" href="https://michaeluloth.com" />
 
     <!--- Open Graph --->
     <!--- see: https://ogp.me --->
     <meta property="og:title" :content="title || $data.site.title" />
     <script webc:type="js" webc:is="template">
-      `<meta property="og:url" content="${require('path').join(site.url, page.url)}" />`;
+      const currentUrl = require('path').join(site.url, page.url);
+      `<link rel="canonical" href="${currentUrl}" />
+       <meta property="og:url" content="${currentUrl}" />`;
     </script>
     <meta property="og:description" :content="description || $data.site.description.site" />
     <meta name="twitter:card" :content="$data.site.openGraph.twitter.card" />
