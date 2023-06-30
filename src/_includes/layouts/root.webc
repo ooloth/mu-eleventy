@@ -5,7 +5,12 @@
     <!--- Base --->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <script webc:type="js" webc:is="template">
+      const image = ogImage('src/_includes/components/og-image.og.njk').then(r => r);
+      image;
+      // `${ogImage('src/_includes/components/og-image.og.njk', { title: 'Hello World! 👋' })}`;
+      // {% ogImage "./og-image.og.njk", { title: "Hello World! 👋" } %}
+    </script>
     <!--- SEO --->
     <title @text="title || $data.site.title"></title>
     <meta name="description" :content="description || $data.site.description.site" />

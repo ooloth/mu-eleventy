@@ -2,6 +2,12 @@ const { DateTime } = require('luxon');
 const markdownItAnchor = require('markdown-it-anchor');
 const yaml = require('js-yaml');
 
+// for og images
+const fs = require('fs');
+const twemoji = require('twemoji');
+const fetch = require('node-fetch');
+const EleventyPluginOgImage = require('eleventy-plugin-og-image');
+
 const { EleventyHtmlBasePlugin } = require('@11ty/eleventy');
 const bundle = require('@11ty/eleventy-plugin-bundle');
 const embedEverything = require('eleventy-plugin-embed-everything');
@@ -41,13 +47,43 @@ module.exports = function (config) {
     youtube: {
       options: {
         // See: https://github.com/gfscott/eleventy-plugin-embed-everything/tree/main/packages/youtube#lite-youtube-embed
-        lite: {
-          thumbnailQuality: 'maxresdefault',
-        },
+        lite: { thumbnailQuality: 'maxresdefault' },
       },
     },
   });
   config.addPlugin(postCSS);
+
+  // OG images
+  // see: https://github.com/KiwiKilian/eleventy-plugin-og-image/tree/main/example
+  /** @type { import('eleventy-plugin-og-image').EleventyPluginOgImageOptions } */
+  const eleventyPluginOgImageOptions = {
+    outputFileExtension: 'png',
+
+    satoriOptions: {
+      fonts: [
+        {
+          name: 'SF Pro Display',
+          data: fs.readFileSync('./public/fonts/SF-Pro-Display-Black.woff'),
+          weight: 900,
+          style: 'normal',
+        },
+      ],
+      loadAdditionalAsset: async (languageCode, segment) => {
+        if (languageCode === 'emoji') {
+          const emojiUrl = `https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/${twemoji.convert.toCodePoint(
+            segment,
+          )}.svg`;
+          const emojiSvg = await (await fetch(emojiUrl)).text();
+
+          return `data:image/svg+xml;base64,${Buffer.from(emojiSvg).toString('base64')}`;
+        }
+
+        return segment;
+      },
+    },
+  };
+
+  config.addPlugin(EleventyPluginOgImage, eleventyPluginOgImageOptions);
 
   // Collections
 
