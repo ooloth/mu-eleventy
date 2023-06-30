@@ -10,12 +10,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!--- SEO --->
-    <title @text="title || $data.site.title"></title>
     <meta name="description" :content="description || $data.site.description.site" />
     <meta name="author" :content="$data.site.author.name" />
+    <!--- Title and Image --->
+    <script webc:type="js" webc:is="template">
+      const isHome = page.url === '/';
+      const is404 = page.url === '/404.html';
 
-    <!--- Open Graph --->
-    <!--- see: https://ogp.me --->
+      // TODO: move this logic to an eleventyComputed title field in the folder frontmatter?
+      const pageTitle = isHome
+        ? $data.site.title
+        : is404
+        ? 'Page not found'
+        : title ??
+          // If no page title has been set, generate one from the fileSlug
+          page.fileSlug
+            .replace('/', '') // remove leading and trailing slashes
+            .split('-') // split on hyphens
+            .map((word, index) =>
+              // Capitalize the first word and any words that aren't conjunctions; otherwise, return the word as-is (lowercase)
+              (index === 0 || !['a', 'and', 'in', 'of', 'on', 'or'].includes(word)
+                ? word[0].toUpperCase() + word.slice(1)
+                : word
+              ).join(' '),
+            );
+
+      // Return title and image tags
+      `<title>${pageTitle}></title>
+       <meta property="og:title" content="${pageTitle}" />
     <script webc:type="js" webc:is="template">
       const currentUrl = require('path').join(site.url, page.url);
       `<link rel="canonical" href="${currentUrl}" />
