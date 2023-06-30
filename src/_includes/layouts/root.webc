@@ -55,7 +55,7 @@
             }`,
             `c_fit,l_text:arial_26:${isHome ? 'Created' : 'Written'} by,co_rgb:d4d4d4,g_south_west,x_200,y_136,w_900`,
             `c_fit,l_text:arial_34:${$data.site.author.name},co_rgb:fafafa,g_south_west,x_${
-              isHome ? 202 : 202
+              isHome ? 200 : 201
             },y_100,w_900`,
             'mu/blank.png',
           ].join('/');
