@@ -53,10 +53,10 @@
             `c_fit,l_text:arial_90_extrabold_line_spacing_4:${pageTitle},co_rgb:fafafa,g_west,x_80,y_${-60},w_1040,h_${
               630 - 24 * 2 - 80 - 56 * 2
             }`,
-            `c_fit,l_text:arial_26:${
-              isWriting ? 'Written' : 'Created'
-            } by,co_rgb:d4d4d4,g_south_west,x_200,y_136,w_900`,
-            `c_fit,l_text:arial_34:${$data.site.author.name},co_rgb:fafafa,g_south_west,x_202,y_100,w_900`,
+            `c_fit,l_text:arial_26:${isHome ? 'Created' : 'Written'} by,co_rgb:d4d4d4,g_south_west,x_200,y_136,w_900`,
+            `c_fit,l_text:arial_34:${$data.site.author.name},co_rgb:fafafa,g_south_west,x_${
+              isHome ? 202 : 202
+            },y_100,w_900`,
             'mu/blank.png',
           ].join('/');
 
