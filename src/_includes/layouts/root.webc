@@ -13,24 +13,27 @@
 
     <!--- Open Graph --->
     <!--- see: https://ogp.me --->
-    <meta property="og:title" :content="title || $data.site.title" />
     <script webc:type="js" webc:is="template">
       const currentUrl = require('path').join(site.url, page.url);
       `<link rel="canonical" href="${currentUrl}" />
        <meta property="og:url" content="${currentUrl}" />`;
     </script>
+
+    <meta property="og:type" :content="$data.site.openGraph.type" />
+    <meta property="og:title" :content="title || $data.site.title" />
     <meta property="og:description" :content="description || $data.site.description.site" />
+    <meta property="og:locale" :content="$data.site.openGraph.locale" />
+    <meta property="og:site_name" :content="$data.site.title" />
+    <script webc:type="js" webc:is="template">
+      const pathAndExtension = ogImage || $data.site.openGraph.image;
+      const imageUrl = `https://res.cloudinary.com/ooloth/image/upload/c_scale,w_1200,f_auto,q_auto/${pathAndExtension}`;
+      `<meta property="og:image" content="${imageUrl}" />`;
+    </script>
+
+    <!--- Twitter --->
     <meta name="twitter:card" :content="$data.site.openGraph.twitter.card" />
     <meta name="twitter:creator" :content="$data.site.openGraph.twitter.creator" />
     <meta name="twitter:site" :content="$data.site.openGraph.twitter.site" />
-    <meta property="og:type" :content="$data.site.openGraph.type" />
-    <script webc:type="js" webc:is="template">
-      const pathAndExtension = ogImage || $data.site.openGraph.image;
-      const url = `https://res.cloudinary.com/ooloth/image/upload/c_scale,w_1200,f_auto,q_auto/${pathAndExtension}`;
-      `<meta property="og:image" content="${url}" />`;
-    </script>
-    <meta property="og:locale" :content="$data.site.openGraph.locale" />
-    <meta property="og:site_name" :content="$data.site.title" />
 
     <!--- Icons --->
     <!--- see: https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/The_head_metadata_in_HTML#adding_custom_icons_to_your_site --->
