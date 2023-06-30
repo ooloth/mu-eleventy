@@ -2,6 +2,9 @@
 
 <html :lang="$data.site.language" class="bg-rose-300">
   <head>
+    <!--- Styles (does it help to start fetching as early as possible?) --->
+    <link href="/styles/main.css" rel="stylesheet" webc:keep />
+
     <!--- Base --->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -66,9 +69,6 @@
     <meta name="theme-color" content="#ffffff" />
     <meta name="msapplication-TileColor" content="#ffffff" />
     <meta name="msapplication-config" content="/favicons/browserconfig.xml" />
-
-    <!--- Styles --->
-    <link href="/styles/main.css" rel="stylesheet" webc:keep />
 
     <!--- Feeds --->
     <link rel="alternate" href="/feed.xml" type="application/atom+xml" title="${site.title}" />
