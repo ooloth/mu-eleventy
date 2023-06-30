@@ -34,6 +34,7 @@
               ).join(' '),
             );
 
+      // TODO: create a v2 option based on this design: https://delba.dev/blog/next-blog-generate-og-image
       const socialImage = ogImage
         ? // If a custom ogImage is set and includes an extension, use it as the social sharing image
           // TODO: handle customOgImagePublicId doesn't end with a known file extension
