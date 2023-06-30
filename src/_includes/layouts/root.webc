@@ -9,6 +9,7 @@
     <!--- SEO --->
     <title @text="title || $data.site.title"></title>
     <meta name="description" :content="description || $data.site.description.site" />
+    <meta name="author" :content="$data.site.author.name" />
 
     <!--- Open Graph --->
     <!--- see: https://ogp.me --->
