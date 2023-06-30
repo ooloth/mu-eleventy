@@ -62,7 +62,7 @@
           ].join('/');
 
       // Return title and image tags
-      `<title>${pageTitle}></title>
+      `<title>${pageTitle}</title>
        <meta property="og:title" content="${pageTitle}" />
        <meta property="og:image" content="${socialImage}" />`;
     </script>
