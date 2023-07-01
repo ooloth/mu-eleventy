@@ -22,29 +22,35 @@ on:
       - 'src/**'
       - .eleventy.js
       - .eleventyignore
-      - .gitignore
       - netlify.toml
       - postcss.config.js
       - tailwind.config.js
 
+# TODO: when adding ci step here, can I add it as a separate job and have both jobs share the initial checkout and npm ci step?
 jobs:
   rebuild:
     runs-on: ubuntu-latest
     name: Rebuild site
     steps:
-      - uses: actions/checkout@v3
+      - name: Check out repo ☁️
+        uses: actions/checkout@v3
         with:
           repository: ooloth/michaeluloth.com
           token: ${{ secrets.ACTIONS_TOKEN }}
           submodules: recursive
-      - uses: actions/setup-node@v3
+
+      - name: Set up Node 🧰
+        uses: actions/setup-node@v3
         with:
           node-version-file: '.nvmrc'
           cache: 'npm'
-      # use cached node_modules if found (instead of running npm install)
-      - run: npm ci --prefer-offline
-      - run: npm run build
 
-      - name: Publish to Netlify
+      - name: Install dependencies (use cached node_modules if found) 📦
+        run: npm ci --prefer-offline
+
+      - name: Build the site 🏗️
+        run: npm run build
+
+      - name: Publish to Netlify 🚀
         # Deploy updated "_site" folder to production Netlify branch
         run: npx netlify-cli deploy --prod --message "deploy from GitHub Action" --dir=_site
