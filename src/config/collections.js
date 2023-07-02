@@ -1,4 +1,5 @@
 /**
+ * Given a list of collection items, removes any that don't set "published" to true.
  * @function
  * @template T
  * @param {array<T>} collection
@@ -8,6 +9,7 @@ const removeDrafts = collection =>
   process.env.ELEVENTY_PRODUCTION ? collection.filter(item => item.data.published) : collection;
 
 /**
+ * Given a list of collection items, removes any that are scheduled for a future date.
  * @function
  * @template T
  * @param {array<T>} collection
@@ -17,6 +19,7 @@ const removeScheduled = collection =>
   process.env.ELEVENTY_PRODUCTION ? collection.filter(item => item.date <= Date.now()) : collection;
 
 /**
+ * Given a list of collection items, removes any that are marked as private.
  * @function
  * @template T
  * @param {array<T>} collection
@@ -25,6 +28,13 @@ const removeScheduled = collection =>
 const removePrivate = collection =>
   process.env.ELEVENTY_PRODUCTION ? collection.filter(item => !item.data.private) : collection;
 
+/**
+ * Given an array of collection items, returns the array with child items nested under their parents.
+ * @function
+ * @template T
+ * @param {array} collection
+ * @returns {array}
+ */
 const sortByParent = collection => {
   const tree = {};
   const roots = [];
