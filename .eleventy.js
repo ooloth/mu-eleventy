@@ -10,6 +10,7 @@ const rss = require('@11ty/eleventy-plugin-rss');
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 const webC = require('@11ty/eleventy-plugin-webc');
 
+const sendEmail = require('./lib/sendGrid/sendEmail.js');
 const { removeDrafts, removePrivate, removeScheduled, sortByParent } = require('./src/config/collections.js');
 const { image } = require('./src/config/shortcodes.js');
 
@@ -64,7 +65,6 @@ module.exports = function (config) {
   });
 
   // Notes in alphabetical order
-  // TODO: in production, filter out private notes
   // See: https://www.11ty.dev/docs/collections/#getfilteredbyglob(-glob-)
   config.addCollection('notes', collectionApi => {
     const notes = collectionApi
@@ -80,6 +80,47 @@ module.exports = function (config) {
   // Pages
   // See: https://www.11ty.dev/docs/collections/#getfilteredbyglob(-glob-)
   config.addCollection('pages', collectionApi => collectionApi.getFilteredByGlob('src/content/pages/**/*.md'));
+
+  // All collection items for auditing purposes
+  // See: https://www.11ty.dev/docs/collections/#getfilteredbyglob(-glob-)
+  config.addCollection('everything', async collectionApi => {
+    // Only proceed if this is an audit build
+    if (!process.env.AUDIT_CONTENT) return;
+
+    const allContentPages = collectionApi.getFilteredByGlob(['./**/*.md', './**/*.webc']);
+    const noTitle = [];
+    const scheduled = [];
+    const drafts = [];
+
+    const isPost = item => item.data.destination === 'blog';
+
+    allContentPages.forEach(item => {
+      if (!item.data.title) noTitle.push(item);
+      if (isPost(item) && item.date > Date.now()) scheduled.push(item);
+      if (isPost(item) && !item.data.published) drafts.push(item);
+    });
+
+    const getItemsHtml = items => items.map(item => `<li>${item.fileSlug}</li>`).join('');
+
+    const noTitleHtml = noTitle.length ? `<h2>🤷‍♂️ Missing a title️</h2><ul>${getItemsHtml(noTitle)}</ul>` : '';
+
+    const scheduledHtml =
+      '<h2>📆 Scheduled</h2>' +
+      (scheduled.length
+        ? `<ul>${getItemsHtml(scheduled)}</ul>`
+        : '<p>No scheduled posts. <strong><em>Time to schedule one!</em></strong></p>');
+
+    const draftsHtml =
+      '<h2>✏️ Drafts️</h2>' +
+      (drafts.length
+        ? `<ul>${getItemsHtml(drafts)}</ul>`
+        : '<p>No blog post drafts. <strong><em>Time to start one!</em></strong></p>');
+
+    await sendEmail('Blog post status ✍️', noTitleHtml + scheduledHtml + draftsHtml);
+
+    // Return empty array to prevent an Eleventy build error
+    return [];
+  });
 
   // Data extensions
   config.addDataExtension('yaml', contents => yaml.load(contents));
