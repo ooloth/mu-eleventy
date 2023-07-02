@@ -1,5 +1,6 @@
 # Builds the site on GitHub because GitHub offers 2000 free CI/CD minutes, while Netlify offers 300.
 # See: https://bennypowers.dev/posts/cheap-netlify-11ty-rebuilds/
+# See: https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions
 
 name: Rebuild Netlify site
 
@@ -39,13 +40,13 @@ jobs:
           token: ${{ secrets.ACTIONS_TOKEN }}
           submodules: recursive
 
-      - name: Set up Node 🧰
+      - name: Set up node 🧰
         uses: actions/setup-node@v3
         with:
           node-version-file: '.nvmrc'
           cache: 'npm'
 
-      - name: Install dependencies (use cached node_modules if found) 📦
+      - name: Install dependencies 📦
         run: npm ci --prefer-offline
 
       - name: Build the site 🏗️
