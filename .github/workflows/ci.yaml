@@ -1,3 +1,5 @@
+# See: https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions
+
 name: Validate formatting, linting and types
 
 on: push
@@ -17,11 +19,11 @@ jobs:
       # use cached node_modules if found (instead of running npm install)
       - run: npm ci --prefer-offline
 
-      - name: Validate formatting
+      - name: Validate formatting 💅
         run: npm run format:check
 
-      - name: Validate linting
+      - name: Validate linting 🪲
         run: npm run lint
 
-      - name: Validate typing
+      - name: Validate types 🔍
         run: npm run types:check
