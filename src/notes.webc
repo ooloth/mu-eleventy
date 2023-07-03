@@ -34,5 +34,3 @@ title: Notes
     </script>
   </ul>
 </section>
-
-<!-- {%- css %}.postlist { counter-reset: start-from {{ (postslistCounter or postslist.length) + 1 }} }{% endcss %} -->
