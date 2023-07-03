@@ -125,7 +125,7 @@ module.exports = function (config) {
 
     const getItemsHtml = items => items.map(item => `<li>${item.fileSlug}</li>`).join('');
 
-    const noTitleHtml = noTitle.length ? `<h2>🤷‍♂️ Missing a title️</h2><ul>${getItemsHtml(noTitle)}</ul>` : '';
+    const noTitleHtml = noTitle.length ? `<h3>🤷‍♂️ Missing a title️</h3><ul>${getItemsHtml(noTitle)}</ul>` : '';
 
     const getScheduledItemsHtml = items =>
       items
@@ -141,13 +141,13 @@ module.exports = function (config) {
         .join('');
 
     const scheduledHtml =
-      '<h2>Scheduled 📆</h2>' +
-      (scheduled.length ? `<ul>${getScheduledItemsHtml(scheduled)}</ul>` : '<p><em>Time to schedule a post!</em></p>');
+      '<h3>Scheduled 📆</h3>' +
+      (scheduled.length ? `<ul>${getScheduledItemsHtml(scheduled)}</ul>` : '<em>Time to schedule a post!</em>');
 
     const draftsHtml = Object.keys(draftsByStatus)
       .map(key =>
         draftsByStatus[key].items.length
-          ? `<h2>${key[0].toLocaleUpperCase() + key.slice(1)} ${draftsByStatus[key].emoji}</h2><ul>${getItemsHtml(
+          ? `<h3>${key[0].toLocaleUpperCase() + key.slice(1)} ${draftsByStatus[key].emoji}</h3><ul>${getItemsHtml(
               draftsByStatus[key].items,
             )}</ul>`
           : '',
