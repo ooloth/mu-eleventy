@@ -143,11 +143,11 @@ module.exports = function (config) {
   // });
 
   // Filters
-  config.addFilter('readableDate', (date, format, zone) => {
+  config.addFilter('readableDate', (date, format) => {
     const dateObj = typeof date === 'string' ? new Date(date) : date;
 
     // Formatting tokens for Luxon: https://moment.github.io/luxon/#/formatting?id=table-of-tokens
-    return DateTime.fromJSDate(dateObj, { zone: zone || 'America/Toronto' }).toFormat(format || 'DD');
+    return DateTime.fromJSDate(dateObj, { zone: 'America/Toronto' }).toFormat(format || 'DD');
   });
 
   config.addFilter('htmlDateString', date => {
