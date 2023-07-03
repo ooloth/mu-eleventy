@@ -154,7 +154,7 @@ module.exports = function (config) {
     const dateObj = typeof date === 'string' ? new Date(date) : date;
 
     // dateObj input: https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
-    return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat('yyyy-LL-dd');
+    return DateTime.fromJSDate(dateObj, { zone: 'America/Toronto' }).toFormat('yyyy-LL-dd');
   });
 
   // Return true if item is in collection (at any ancestry level)
