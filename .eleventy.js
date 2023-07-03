@@ -85,7 +85,7 @@ module.exports = function (config) {
   // See: https://www.11ty.dev/docs/collections/#getfilteredbyglob(-glob-)
   config.addCollection('everything', async collectionApi => {
     // Only proceed if this is an audit build
-    if (!process.env.AUDIT_CONTENT) return;
+    if (!process.env.AUDIT_CONTENT) return [];
 
     const allContentPages = collectionApi.getFilteredByGlob(['./**/*.md', './**/*.webc']);
     const noTitle = [];
