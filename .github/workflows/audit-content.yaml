@@ -1,0 +1,35 @@
+# See: https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions
+
+name: Audit content
+
+env:
+  AUDIT_CONTENT: true
+
+on:
+  schedule:
+    # every Monday at 8am ET
+    - cron: '0 12 * * 1'
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    name: Rebuild site
+    steps:
+      - name: Check out repo ☁️
+        uses: actions/checkout@v3
+        with:
+          repository: ooloth/michaeluloth.com
+          token: ${{ secrets.ACTIONS_TOKEN }}
+          submodules: recursive
+
+      - name: Set up node 🧰
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+
+      - name: Install dependencies 📦
+        run: npm ci --prefer-offline
+
+      - name: Build the site 🏗️
+        run: npm run build
