@@ -10,7 +10,6 @@ const rss = require('@11ty/eleventy-plugin-rss');
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 const webC = require('@11ty/eleventy-plugin-webc');
 
-const sendEmail = require('./lib/sendGrid/sendEmail.js');
 const { removeDrafts, removePrivate, removeScheduled, sortByParent } = require('./src/config/collections.js');
 const { image } = require('./src/config/shortcodes.js');
 
@@ -83,7 +82,7 @@ module.exports = function (config) {
 
   // All collection items for auditing purposes
   // See: https://www.11ty.dev/docs/collections/#getfilteredbyglob(-glob-)
-  config.addCollection('everything', async collectionApi => {
+  config.addCollection('auditContent', async collectionApi => {
     // Only proceed if this is an audit build
     if (!process.env.AUDIT_CONTENT) return [];
 
@@ -104,18 +103,18 @@ module.exports = function (config) {
 
     const noTitleHtml = noTitle.length ? `<h2>🤷‍♂️ Missing a title️</h2><ul>${getItemsHtml(noTitle)}</ul>` : '';
 
+    const getScheduledItemsHtml = items =>
+      items.map(item => `<li><strong>${item.date}</strong>: ${item.title}</li>`).join('');
+
     const scheduledHtml =
-      '<h2>📆 Scheduled</h2>' +
-      (scheduled.length
-        ? `<ul>${getItemsHtml(scheduled)}</ul>`
-        : '<p>No scheduled posts. <strong><em>Time to schedule one!</em></strong></p>');
+      '<strong>Scheduled 📆</strong>' +
+      (scheduled.length ? `<ul>${getItemsHtml(scheduled)}</ul>` : '<p><em>Time to schedule a post!</em></p>');
 
     const draftsHtml =
-      '<h2>✏️ Drafts️</h2>' +
-      (drafts.length
-        ? `<ul>${getItemsHtml(drafts)}</ul>`
-        : '<p>No blog post drafts. <strong><em>Time to start one!</em></strong></p>');
+      '<strong>️Drafts️ ✏</strong>' +
+      (drafts.length ? `<ul>${getItemsHtml(drafts)}</ul>` : '<p>Nothing?? Time to outline a new post!</p>');
 
+    const sendEmail = require('./lib/sendGrid/sendEmail.js');
     await sendEmail('Blog post status ✍️', noTitleHtml + scheduledHtml + draftsHtml);
 
     // Return empty array to prevent an Eleventy build error
