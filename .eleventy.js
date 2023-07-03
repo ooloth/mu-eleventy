@@ -141,7 +141,7 @@ module.exports = function (config) {
         .join('');
 
     const scheduledHtml =
-      '<strong>Scheduled 📆</strong>' +
+      '<h2>Scheduled 📆</h2>' +
       (scheduled.length ? `<ul>${getScheduledItemsHtml(scheduled)}</ul>` : '<p><em>Time to schedule a post!</em></p>');
 
     const draftsHtml = Object.keys(draftsByStatus)
