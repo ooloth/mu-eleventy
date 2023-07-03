@@ -103,16 +103,26 @@ module.exports = function (config) {
 
     const noTitleHtml = noTitle.length ? `<h2>🤷‍♂️ Missing a title️</h2><ul>${getItemsHtml(noTitle)}</ul>` : '';
 
-    const getScheduledItemsHtml = items =>
-      items.map(item => `<li><strong>${item.date}</strong>: ${item.title}</li>`).join('');
-
-    const scheduledHtml =
-      '<strong>Scheduled 📆</strong>' +
-      (scheduled.length ? `<ul>${getItemsHtml(scheduled)}</ul>` : '<p><em>Time to schedule a post!</em></p>');
-
     const draftsHtml =
       '<strong>️Drafts️ ✏</strong>' +
       (drafts.length ? `<ul>${getItemsHtml(drafts)}</ul>` : '<p>Nothing?? Time to outline a new post!</p>');
+
+    const getScheduledItemsHtml = items =>
+      items
+        // Sort by date, ascending using localeCompare
+        .sort((a, b) => a.date.localeCompare(b.date))
+        // Formatting tokens for Luxon: https://moment.github.io/luxon/#/formatting?id=table-of-tokens
+        .map(
+          item =>
+            `<li><strong>${DateTime.fromJSDate(item.date, { zone: 'America/Toronto' }).toFormat('MMM dd')}</strong>: ${
+              item.data.title
+            }</li>`,
+        )
+        .join('');
+
+    const scheduledHtml =
+      '<strong>Scheduled 📆</strong>' +
+      (scheduled.length ? `<ul>${getScheduledItemsHtml(scheduled)}</ul>` : '<p><em>Time to schedule a post!</em></p>');
 
     const sendEmail = require('./lib/sendGrid/sendEmail.js');
     await sendEmail('Blog post status ✍️', noTitleHtml + scheduledHtml + draftsHtml);
