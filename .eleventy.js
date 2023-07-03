@@ -89,23 +89,43 @@ module.exports = function (config) {
     const allContentPages = collectionApi.getFilteredByGlob(['./**/*.md', './**/*.webc']);
     const noTitle = [];
     const scheduled = [];
-    const drafts = [];
+    const draftsByStatus = {
+      announcing: { emoji: '🎙️', items: [] },
+      publishing: { emoji: '🚀', items: [] },
+      editing: { emoji: '💅', items: [] },
+      drafting: { emoji: '🤮', items: [] },
+      outlining: { emoji: '🌳', items: [] },
+      researching: { emoji: '🔍', items: [] },
+      unknown: { emoji: '🤷‍♂️', items: [] },
+    };
 
     const isPost = item => item.data.destination === 'blog';
 
     allContentPages.forEach(item => {
       if (!item.data.title) noTitle.push(item);
-      if (isPost(item) && item.date > Date.now()) scheduled.push(item);
-      if (isPost(item) && !item.data.published) drafts.push(item);
+      if (!isPost(item)) return;
+
+      // If item is both scheduled and publishing, put it in the scheduled list
+      if (item.date > Date.now()) {
+        scheduled.push(item);
+        return;
+      }
+
+      // Sort drafts by status
+      Object.keys(draftsByStatus).forEach(key => {
+        if (item.data.status === key) {
+          draftsByStatus[key].items.push(item);
+          return;
+        }
+      });
+
+      // If item is not published, put it in the unknown status list
+      if (!item.data.status && !item.data.published) draftsByStatus.unknown.items.push(item);
     });
 
     const getItemsHtml = items => items.map(item => `<li>${item.fileSlug}</li>`).join('');
 
     const noTitleHtml = noTitle.length ? `<h2>🤷‍♂️ Missing a title️</h2><ul>${getItemsHtml(noTitle)}</ul>` : '';
-
-    const draftsHtml =
-      '<strong>️Drafts️ ✏</strong>' +
-      (drafts.length ? `<ul>${getItemsHtml(drafts)}</ul>` : '<p>Nothing?? Time to outline a new post!</p>');
 
     const getScheduledItemsHtml = items =>
       items
@@ -114,7 +134,7 @@ module.exports = function (config) {
         // Formatting tokens for Luxon: https://moment.github.io/luxon/#/formatting?id=table-of-tokens
         .map(
           item =>
-            `<li><strong>${DateTime.fromJSDate(item.date, { zone: 'America/Toronto' }).toFormat('MMM dd')}</strong>: ${
+            `<li><strong>${DateTime.fromJSDate(item.date, { zone: 'America/Toronto' }).toFormat('MMM dd')}:</strong> ${
               item.data.title
             }</li>`,
         )
@@ -123,6 +143,16 @@ module.exports = function (config) {
     const scheduledHtml =
       '<strong>Scheduled 📆</strong>' +
       (scheduled.length ? `<ul>${getScheduledItemsHtml(scheduled)}</ul>` : '<p><em>Time to schedule a post!</em></p>');
+
+    const draftsHtml = Object.keys(draftsByStatus)
+      .map(key =>
+        draftsByStatus[key].items.length
+          ? `<h2>${key[0].toLocaleUpperCase() + key.slice(1)} ${draftsByStatus[key].emoji}</h2><ul>${getItemsHtml(
+              draftsByStatus[key].items,
+            )}</ul>`
+          : '',
+      )
+      .join('');
 
     const sendEmail = require('./lib/sendGrid/sendEmail.js');
     await sendEmail('Blog post status ✍️', noTitleHtml + scheduledHtml + draftsHtml);
