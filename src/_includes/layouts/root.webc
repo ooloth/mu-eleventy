@@ -123,7 +123,6 @@
 
     <!--- Other Open Graph (see: https://ogp.me) --->
     <meta property="og:type" :content="$data.site.openGraph.type" />
-    <meta property="og:title" :content="title || $data.site.title" />
     <meta property="og:description" :content="description || $data.site.description.site" />
     <meta property="og:locale" :content="$data.site.openGraph.locale" />
     <meta property="og:site_name" :content="$data.site.title" />
