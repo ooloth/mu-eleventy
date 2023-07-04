@@ -1,6 +1,6 @@
 ---
 layout: main.webc
-title: '{{ site.title }}'
+title: Michael Uloth
 ---
 
 <h1 class="sr-only">Michael Uloth</h1>
