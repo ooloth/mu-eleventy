@@ -19,12 +19,13 @@
       // TODO: move this logic to an eleventyComputed title field in the folder frontmatter?
       // TODO: either way, extract into a function (shortcode?)
       // TODO: implement as an automatic transform for titles and headings?
-      const pageTitle = isHome
+      const pageTitle = title
+        ? title
+        : isHome
         ? $data.site.title
         : is404
         ? 'Page not found'
-        : title ??
-          // If no page title has been set, generate one from the fileSlug
+        : // If no page title has been set, generate one from the fileSlug
           page.fileSlug
             .replace('/', '') // remove leading and trailing slashes
             .split('-') // split on hyphens
