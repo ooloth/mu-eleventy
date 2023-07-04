@@ -103,8 +103,10 @@
             'mu/blank.png',
           ].join('/');
 
+      const pageTitleWithSuffix = pageTitle + (isHome ? '' : ` • ${$data.site.title}`);
+
       // Return title and image tags
-      `<title>${pageTitle}</title>
+      `<title>${pageTitleWithSuffix}</title>
        <meta property="og:title" content="${pageTitle}" />
        <meta property="og:image" content="${socialImage}" />`;
     </script>
