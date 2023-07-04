@@ -52,6 +52,7 @@ module.exports = function (config) {
   });
   config.addPlugin(postCSS);
   config.addPlugin(unified, {
+    htmlTransforms: ['rehype-minify-whitespace'],
   });
 
   // Collections
