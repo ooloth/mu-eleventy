@@ -118,13 +118,26 @@
        <meta property="og:url" content="${pageUrl}" />`;
     </script>
 
+    <!--- Description --->
+    <script webc:type="js" webc:is="template">
+      const pageDescription = description
+        ? description
+        : isPageInCollection(page, $data.collections.notes)
+        ? `Notes about ${title} by ${$data.site.author.name}.`
+        : isPageInCollection(page, $data.collections.posts)
+        ? `Blog post by ${$data.site.author.name}.`
+        : $data.site.description.site;
+
+      // Return description tags
+      `<meta name="description" content="${pageDescription}" />
+       <meta property="og:description" content="${pageDescription}" />`;
+    </script>
+
     <!--- Other SEO --->
-    <meta name="description" :content="description || $data.site.description.site" />
     <meta name="author" :content="$data.site.author.name" />
 
     <!--- Other Open Graph (see: https://ogp.me) --->
     <meta property="og:type" :content="$data.site.openGraph.type" />
-    <meta property="og:description" :content="description || $data.site.description.site" />
     <meta property="og:locale" :content="$data.site.openGraph.locale" />
     <meta property="og:site_name" :content="$data.site.title" />
 
