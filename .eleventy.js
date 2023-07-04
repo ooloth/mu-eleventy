@@ -10,6 +10,9 @@ const rss = require('@11ty/eleventy-plugin-rss');
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 const webC = require('@11ty/eleventy-plugin-webc');
 
+// Unified plugins (remark, rehype, retext)
+const unified = require('eleventy-plugin-unified');
+
 const { removeDrafts, removePrivate, removeScheduled, sortByParent } = require('./src/config/collections.js');
 const { image } = require('./src/config/shortcodes.js');
 
@@ -48,6 +51,8 @@ module.exports = function (config) {
     },
   });
   config.addPlugin(postCSS);
+  config.addPlugin(unified, {
+  });
 
   // Collections
 

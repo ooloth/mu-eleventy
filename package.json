@@ -30,6 +30,7 @@
     "dotenv": "^16.3.1",
     "eleventy-plugin-embed-everything": "^1.16.0",
     "eleventy-plugin-postcss": "^1.0.4",
+    "eleventy-plugin-unified": "^2.0.0",
     "eslint": "^8.41.0",
     "eslint-config-prettier": "^8.8.0",
     "luxon": "^3.3.0",
