@@ -53,7 +53,7 @@ module.exports = function (config) {
   config.addPlugin(postCSS);
   config.addPlugin(unified, {
     htmlTransforms: ['rehype-minify-whitespace'],
-    markdownTransforms: ['@fec/remark-a11y-emoji'],
+    // markdownTransforms: ['@fec/remark-a11y-emoji'],
   });
 
   // Collections
