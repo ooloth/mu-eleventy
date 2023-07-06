@@ -17,6 +17,8 @@ layout: main.webc
   <article @raw="content" class="markdown"></article>
 
   <script
+    webc:if="isPageInCollection(page, $data.collections.posts)"
+    webc:keep
     src="https://giscus.app/client.js"
     data-repo="ooloth/comments"
     data-repo-id="R_kgDOJo8JPg"
@@ -29,7 +31,6 @@ layout: main.webc
     data-input-position="bottom"
     data-theme="preferred_color_scheme"
     data-lang="en"
-    data-loading="lazy"
     crossorigin="anonymous"
     async
   ></script>
