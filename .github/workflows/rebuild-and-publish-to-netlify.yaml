@@ -16,7 +16,9 @@ env:
 on:
   push:
     branches:
-      - main
+      # TODO: change back to "main" when ready
+      # - main
+      - fake-branch
     paths:
       - '.github/workflows/rebuild-and-publish-to-netlify.yaml'
       - 'public/**'
