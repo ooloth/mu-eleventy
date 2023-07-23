@@ -53,6 +53,7 @@ module.exports = function (config) {
   config.addPlugin(postCSS);
   config.addPlugin(unified, {
     htmlTransforms: ['rehype-minify-whitespace'],
+    // FIXME: enabling this removes all {% image %} shortcodes from the output
     // markdownTransforms: ['@fec/remark-a11y-emoji'],
   });
 
