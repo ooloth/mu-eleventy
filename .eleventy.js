@@ -172,14 +172,6 @@ module.exports = function (config) {
   // Data extensions
   config.addDataExtension('yaml', contents => yaml.load(contents));
 
-  // Extensions
-
-  // See: https://www.11ty.dev/docs/languages/custom/#aliasing-an-existing-template-language
-  // See: https://gist.github.com/zachleat/b274ee939759b032bc320be1a03704a2
-  // eleventyConfig.addExtension(['11ty.ts', '11ty.tsx'], {
-  // key: '11ty.js',
-  // });
-
   // Filters
   config.addFilter('readableDate', (date, format) => {
     const dateObj = typeof date === 'string' ? new Date(date) : date;
@@ -200,16 +192,6 @@ module.exports = function (config) {
     collection.some(item => item.url === page.url || (item.children || []).some(child => child.url === page.url)),
   );
 
-  // Get the first `n` elements of a collection.
-  // config.addFilter('head', (array, n) => {
-  //   if (!Array.isArray(array) || array.length === 0) return [];
-  //   if (n < 0) return array.slice(n);
-  //   return array.slice(0, n);
-  // });
-
-  // Return the smallest number argument
-  config.addFilter('min', (...numbers) => Math.min.apply(null, numbers));
-
   // Return all the tags used in a collection
   config.addFilter('getAllTags', collection => {
     let tagSet = new Set();
@@ -218,24 +200,6 @@ module.exports = function (config) {
     }
     return Array.from(tagSet);
   });
-
-  // config.addFilter('filterTagList', tags =>
-  //   (tags || []).filter(tag => ['all', 'nav', 'post', 'posts'].indexOf(tag) === -1),
-  // );
-
-  // Customize Markdown library settings:
-  // config.amendLibrary('md', mdLib => {
-  //   mdLib.use(markdownItAnchor, {
-  //     permalink: markdownItAnchor.permalink.ariaHidden({
-  //       placement: 'after',
-  //       class: 'header-anchor',
-  //       symbol: '#',
-  //       ariaHidden: false,
-  //     }),
-  //     level: [1, 2, 3, 4],
-  //     slugify: config.getFilter('slugify'),
-  //   });
-  // });
 
   // Shortcodes
   config.addShortcode('image', image);
